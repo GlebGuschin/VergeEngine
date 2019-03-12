@@ -21,3 +21,5 @@ int APIENTRY wWinMain(HINSTANCE hInstance_, HINSTANCE hPrevInstance, LPTSTR lpCm
 
 	return 0;
 }
+
+// c40a351c7a69bb825a463ec3f46ce2447b0aa245

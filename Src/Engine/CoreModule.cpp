@@ -3,35 +3,6 @@
 
 namespace Verge3D {
 
-/*
-
-class File : public Referenceable {
-
-	public:
-
-bool File::read() {
-
-}
-
-bool File::write();
-size_t File::getSize();
-
-	};
-
-	class FileSystemManager : public Referenceable {
-
-		DynamicArray<File*> files;
-
-	public:
-
-		virtual File* createFile(const FileName&);
-		virtual void releaseFile(File*);
-
-	};
-
-*/
-
-
 
 
 bool CoreModule::init(Framework* framework_) { 
