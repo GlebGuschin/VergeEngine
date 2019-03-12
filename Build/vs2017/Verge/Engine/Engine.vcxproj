@@ -167,6 +167,43 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\Inc\Engine\Application.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\Asset.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\AssetManager.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\CameraComponent.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\Color.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\Common.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\Component.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\CoreModule.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\DX11RenderModule.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\DynamicArray.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\Engine.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\Entity.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\FileSystemManager.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\Framework.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\Geometry.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\Input.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\InputModule.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\LightComponent.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\Logger.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\Material.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\MaterialManager.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\Math.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\Model.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\Module.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\Name.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\ParticleSystem.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\ParticleSystemComponent.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\RenderCommon.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\RenderModule.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\RenderScene.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\RenderWindow.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\StandaloneApplication.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\String.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\Texture.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\TextureManager.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\Window.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\World.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
