@@ -72,7 +72,7 @@ public:
 
 	AssetState getState() const { return state; }
 
-	virtual void load() {}
+	virtual void load();
 	virtual void unload() {}
 	virtual void reload() {}
 	virtual void save() {}

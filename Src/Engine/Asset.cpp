@@ -13,5 +13,9 @@ void Asset::removeListener(AssetListener* listener) {
 	listeners.remove(listener);
 }
 
+void Asset::load() {
+
+	onLoad();
+}
 
 }

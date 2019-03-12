@@ -24,7 +24,9 @@ public:
 	T* createAsset(const AssetName& name) {
 
 		T* ptr = findAsset<T>(name);
-		if (ptr) return ptr;
+		if (ptr) {
+			return ptr;
+		}
 
 		ptr = new T(name, this);
 		map.insert(Map::value_type(name, ptr));

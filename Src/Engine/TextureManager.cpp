@@ -21,11 +21,21 @@ void TextureManager::removeTexture(Texture* texture) {
 Texture* TextureManager::createTexture(const AssetName& name) {
 
 	Texture* texture = nullptr;
+	
+	SharedPtr<TextureAsset> textureAsset = renderModule->getFramework()->findModule<CoreModule>()->getAssetManager()->createAsset<TextureAsset>(name);
 
-	renderModule->info(L"Texture created...");
+	textureAsset->load();
 
-	renderModule->getFramework()->findModule<CoreModule>()->getAssetManager()->createAsset<TextureAsset>(name);
+	renderModule->info(L"Texture created...");	
 
+	for (uint32_t i = 0; i < textures.size(); i++) {
+		if (textures[i]->getAsset() == textureAsset) {
+			return textures[i];
+		}
+	}
+
+	texture = new Texture(this, textureAsset);
+	addTexture(texture);
 
 	return texture;
 

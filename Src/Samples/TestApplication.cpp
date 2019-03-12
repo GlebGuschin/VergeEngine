@@ -23,6 +23,11 @@ void TestApplication::onStart() {
 	renderWindow->resize(800, 600);
 	renderWindow->update();
 
+	TextureManager* textureManager = getFramework()->findModule<RenderModule>()->getTextureManager();
+	SharedPtr<Texture> texture1 = textureManager->createTexture("Content/Textures/cats.dds");
+	SharedPtr<Texture> texture2 = textureManager->createTexture("Content/Textures/cats.dds");
+
+
 }
 
 void TestApplication::onExit() {
