@@ -27,12 +27,14 @@ void TestApplication::onStart() {
 	SharedPtr<Texture> texture1 = textureManager->createTexture("Content/Textures/cats.dds");
 	SharedPtr<Texture> texture2 = textureManager->createTexture("Content/Textures/cats.dds");
 	SharedPtr<Texture> texture3 = textureManager->createTexture("Content/Textures/cookie.dds");
+	SharedPtr<Texture> texture4 = textureManager->createTexture("Content/Textures/particle.dds");
 
 	MaterialManager* materialManager = rm->getMaterialManager();
 	SharedPtr<Material> material1 = materialManager->createMaterial();
 
 	material1->setTexture(texture1, MaterialTextureType::Default);
 	material1->setTexture(texture3, MaterialTextureType::Detail);
+	material1->setTexture(texture4, MaterialTextureType::Emission);
 
 	int i = 0;
 
@@ -80,3 +82,9 @@ void TestApplication::onKeyboardAction(const KeyboardEvent& ke) {
 	}
 
 }
+
+/*
+
+
+*/
+
