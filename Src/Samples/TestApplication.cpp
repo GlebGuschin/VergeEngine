@@ -22,11 +22,19 @@ void TestApplication::onStart() {
 	renderWindow->move(00, 00);
 	renderWindow->resize(800, 600);
 	renderWindow->update();
-
-	TextureManager* textureManager = getFramework()->findModule<RenderModule>()->getTextureManager();
+	
+	TextureManager* textureManager = rm->getTextureManager();
 	SharedPtr<Texture> texture1 = textureManager->createTexture("Content/Textures/cats.dds");
 	SharedPtr<Texture> texture2 = textureManager->createTexture("Content/Textures/cats.dds");
+	SharedPtr<Texture> texture3 = textureManager->createTexture("Content/Textures/cookie.dds");
 
+	MaterialManager* materialManager = rm->getMaterialManager();
+	SharedPtr<Material> material1 = materialManager->createMaterial();
+
+	material1->setTexture(texture1, MaterialTextureType::Default);
+	material1->setTexture(texture3, MaterialTextureType::Detail);
+
+	int i = 0;
 
 }
 

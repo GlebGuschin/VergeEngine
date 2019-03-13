@@ -174,7 +174,7 @@ class Material : public Referenceable, public MaterialParams, public AssetListen
 
 	SharedPtr<MaterialAsset> asset;
 
-	SharedPtr<Texture> textures[6];
+	SharedPtr<Texture> textures[16];
 	MaterialManager* manager;
 
 	CustomRenderParams customRenderParams;

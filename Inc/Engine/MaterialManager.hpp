@@ -8,6 +8,8 @@ class MaterialManager : public Referenceable {
 
 	DynamicArray<Material*> materials;
 
+	RenderModule* renderModule;
+
 protected:
 
 	void addMaterial(Material*);
@@ -15,7 +17,7 @@ protected:
 
 public:
 
-	//MaterialManager(RenderSystem* rs) :RenderSystemManager(rs) {}
+	MaterialManager(RenderModule* rm) : renderModule(rm) {}
 
 	virtual Material* createMaterial();
 	virtual Material* createMaterial(const AssetName&);

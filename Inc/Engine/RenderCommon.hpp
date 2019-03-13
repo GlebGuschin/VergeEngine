@@ -14,6 +14,7 @@ class Geometry;
 class Texture;
 class RenderScene;
 class TextureManager;
+class RenderModule;
 
 
 };

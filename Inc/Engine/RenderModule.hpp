@@ -4,6 +4,7 @@
 #include "RenderCommon.hpp"
 #include "RenderScene.hpp"
 #include "TextureManager.hpp"
+#include "MaterialManager.hpp"
 #include <Windows.h>
 
 namespace Verge3D {
@@ -32,6 +33,7 @@ class RenderModule : public Module {
 protected:
 	RenderContext* currentRenderContext;
 	TextureManager* textureManager;
+	MaterialManager* materialManager;
 
 public:
 
@@ -42,10 +44,12 @@ public:
 	virtual bool init(Framework* framework_) { 
 		Module::init(framework_); 
 		textureManager = new TextureManager(this);
+		materialManager = new MaterialManager(this);
 		return true; 
 	}
 
 	virtual void shutdown() {
+		delete materialManager;
 		delete textureManager;
 	}
 
@@ -64,6 +68,8 @@ public:
 	virtual void drawScene(RenderScene*, const SceneView&);
 
 	TextureManager* getTextureManager() const { return textureManager; }
+	MaterialManager* getMaterialManager() const { return materialManager; }
+	
 
 };
 
