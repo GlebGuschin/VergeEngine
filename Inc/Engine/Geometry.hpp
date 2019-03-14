@@ -58,7 +58,14 @@ enum class VertexLayoutItemType {
 	Color1,
 	Normal,
 	Tangent,
-	TexCoord0
+	TexCoord0,
+	TexCoord1,
+	TexCoord2,
+	TexCoord3,
+	TexCoord4,
+	TexCoord5,
+	TexCoord6,
+	TexCoord7	
 };
 
 class VertexBuffer : public Referenceable {
