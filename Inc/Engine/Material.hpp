@@ -195,6 +195,7 @@ public:
 	}
 	Texture* getTexture(MaterialTextureType type);
 
+	void reloadFromAsset();
 
 	/*
 	void setBlendType(MaterialBlendType blendType_) {

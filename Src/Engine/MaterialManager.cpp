@@ -39,9 +39,11 @@ void MaterialManager::destroyMaterial(Material* material) {
 
 }
 
-Material* MaterialManager::cloneMaterial(Material*) {
+Material* MaterialManager::cloneMaterial(Material* srcMaterial) {
 
-	return nullptr;
+	Material* dstMaterial = nullptr;
+
+	return dstMaterial;
 
 }
 

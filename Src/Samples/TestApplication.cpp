@@ -37,6 +37,7 @@ void TestApplication::onStart() {
 	material1->setTexture(texture4, MaterialTextureType::Emission);
 
 	int i = 0;
+	//SharedPtr<Material> material2 = materialManager->createMaterial("Content/Materials/test.mat");
 
 }
 

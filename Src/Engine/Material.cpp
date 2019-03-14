@@ -9,5 +9,15 @@ Material::~Material() {
 
 }
 
+void Material::reloadFromAsset() {
+
+	if (!asset) {
+		return;
+	}
+
+
+
+}
+
 
 }
