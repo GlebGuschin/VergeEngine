@@ -151,6 +151,14 @@ public:
 };
 
 
+class OcclusionAreaRenderSceneObject : public RenderSceneObject {
+
+public:
+
+	OcclusionAreaRenderSceneObject(RenderScene* renderScene_) : RenderSceneObject(renderScene_) {}
+	~OcclusionAreaRenderSceneObject() {}
+
+};
 
 enum RenderSceneObjectType {
 		RENDER_SCENE_OBJECT_LIGHT = 0,
@@ -199,12 +207,14 @@ public:
 	virtual DebugRenderSceneObject* createDebug();
 	virtual void destroyDebug(DebugRenderSceneObject*);
 
+	virtual OcclusionAreaRenderSceneObject* createOcclusionArea();
+	virtual void destroyOcclusionArea(OcclusionAreaRenderSceneObject* area);
 
 		//virtual LightRenderSceneObject* createLight(const LightInfo&);
 		//virtual ModelRenderSceneObject* createModel();
 		
 		//virtual ParticleSystemRenderSceneObject* createParticleSystem();
-		//virtual OcclusionAreaRenderSceneObject* createOcclusionArea();
+	
 		//virtual VolumeRenderSceneObject* createVolume();
 
 		//virtual void destroyModel(ModelRenderSceneObject* model);

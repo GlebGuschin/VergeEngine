@@ -91,6 +91,20 @@ void RenderScene::destroyDebug(DebugRenderSceneObject* d) {
 }
 
 
+OcclusionAreaRenderSceneObject* RenderScene::createOcclusionArea() {
+
+	OcclusionAreaRenderSceneObject* area = nullptr;
+	return area;
+
+}
+
+void RenderScene::destroyOcclusionArea(OcclusionAreaRenderSceneObject* area) {
+
+}
+
+
+
+
 void RenderScene::update(float deltaTime) {
 
 }
