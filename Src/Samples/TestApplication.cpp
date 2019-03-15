@@ -2,6 +2,11 @@
 
 using namespace Verge3D;
 
+namespace Verge3D {
+	void WorldTest();
+}
+
+
 void TestApplication::onStart() {
 
 	StandaloneApplication::onStart();
@@ -38,6 +43,8 @@ void TestApplication::onStart() {
 
 	int i = 0;
 	//SharedPtr<Material> material2 = materialManager->createMaterial("Content/Materials/test.mat");
+	WorldTest();
+
 
 }
 
