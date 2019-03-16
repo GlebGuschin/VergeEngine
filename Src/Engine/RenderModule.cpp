@@ -15,4 +15,28 @@ void RenderModule::destroyScene(RenderScene* renderScene) {
 void RenderModule::drawScene(RenderScene*, const SceneView&) {
 }
 
+
+
+
+
+
+class Pass : public Referenceable {
+
+public:
+
+};
+
+
+class Technique : public Referenceable {
+
+public:
+
+	Pass* addPass();
+
+};
+
+
+
+
+
 }

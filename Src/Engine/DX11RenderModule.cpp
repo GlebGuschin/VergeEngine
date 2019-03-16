@@ -93,6 +93,7 @@ bool DX11RenderModule::init(Framework* framework) {
 
 	RenderModule::init(framework);
 
+
 	factory = nullptr;
 	HRESULT hr;
 	hr = CreateDXGIFactory(__uuidof(IDXGIFactory), (void**)(&factory));
@@ -143,6 +144,9 @@ bool DX11RenderModule::init(Framework* framework) {
 		&device,
 		featureLevels2,
 		&immediateContext);
+
+	info(L"DX11RenderModule intialized...");
+	error(L"Failed");
 
 	return true;
 }

@@ -9,7 +9,7 @@ bool CoreModule::init(Framework* framework_) {
 
 	Module::init(framework_);
 	
-	getFramework()->getLogger()->info(L"CoreModule initialized...");
+	info(L"CoreModule initialized...");
 	
 	assetManager = new AssetManager(this);
 
