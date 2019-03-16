@@ -2,6 +2,7 @@
 
 #include "RenderCommon.hpp"
 #include "ParticleSystem.hpp"
+#include "Model.hpp"
 
 
 namespace Verge3D {

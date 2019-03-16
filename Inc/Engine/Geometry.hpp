@@ -49,7 +49,8 @@ enum IndexType {
 };
 
 enum class VertexAttributeType {
-	Float
+	Float3,
+	Float4
 };
 
 enum class VertexLayoutItemType {
@@ -74,7 +75,7 @@ public:
 
 
 class IndexBuffer : public Referenceable {
-		IndexType type;
+	IndexType type;
 public:
 };
 
@@ -87,6 +88,7 @@ enum class VertexBufferType {
 class Geometry : public Referenceable {
 	
 	Primitives primitives;
+	SharedPtr<VertexBuffer> vertexBuffers[3];
 
 public:
 
