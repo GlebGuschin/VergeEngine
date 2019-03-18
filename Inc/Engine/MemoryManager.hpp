@@ -4,10 +4,13 @@
 
 namespace Verge3D {
 
-	struct MemoryBufferInfo {
+class MemoryManager;
+
+struct MemoryBufferInfo {
 	size_t size;
 	unsigned flags;
 };
+
 
 
 class MemoryBuffer : public Referenceable {

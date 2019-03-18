@@ -189,6 +189,7 @@
     <ClInclude Include="..\..\..\..\Inc\Engine\Material.hpp" />
     <ClInclude Include="..\..\..\..\Inc\Engine\MaterialManager.hpp" />
     <ClInclude Include="..\..\..\..\Inc\Engine\Math.hpp" />
+    <ClInclude Include="..\..\..\..\Inc\Engine\MemoryManager.hpp" />
     <ClInclude Include="..\..\..\..\Inc\Engine\Model.hpp" />
     <ClInclude Include="..\..\..\..\Inc\Engine\Module.hpp" />
     <ClInclude Include="..\..\..\..\Inc\Engine\Name.hpp" />
@@ -222,6 +223,7 @@
     <ClCompile Include="..\..\..\..\Src\Engine\Logger.cpp" />
     <ClCompile Include="..\..\..\..\Src\Engine\Material.cpp" />
     <ClCompile Include="..\..\..\..\Src\Engine\MaterialManager.cpp" />
+    <ClCompile Include="..\..\..\..\Src\Engine\MemoryManager.cpp" />
     <ClCompile Include="..\..\..\..\Src\Engine\Model.cpp" />
     <ClCompile Include="..\..\..\..\Src\Engine\Module.cpp" />
     <ClCompile Include="..\..\..\..\Src\Engine\Name.cpp" />
@@ -234,6 +236,7 @@
     <ClCompile Include="..\..\..\..\Src\Engine\TextureManager.cpp" />
     <ClCompile Include="..\..\..\..\Src\Engine\Window.cpp" />
     <ClCompile Include="..\..\..\..\Src\Engine\World.cpp" />
+    <ClCompile Include="Source.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
