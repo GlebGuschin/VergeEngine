@@ -4,6 +4,15 @@
 
 namespace Verge3D {
 
+class EntityListener {
+
+public:
+
+	virtual void onTransformChanged(Entity*) = 0;
+
+};
+
+
 class Entity : public Referenceable {
 
 	DynamicArray<SharedPtr<Component>> components;
@@ -14,12 +23,16 @@ class Entity : public Referenceable {
 
 	Entity* parent;
 
+	Transform transform;
+
 protected:
 
 	virtual void onEnterWorld();
 	virtual void onLeaveWorld();
 
 public:
+
+	void setTransform(const Transform& transform_);
 
 	void setName(const Name& name_) { name = name_; }
 	const Name& getName() const { return name; }
@@ -35,7 +48,7 @@ public:
 	virtual bool removeChild(Entity*);
 	virtual unsigned getNumChildren(bool recursive=0) const;
 	Entity* getChild(unsigned index) const;
-	DynamicArray<Entity*> getChildren() const;
+	//DynamicArray<Entity*> getChildren() const;
 
 
 	virtual bool isComponent(Component*) const;

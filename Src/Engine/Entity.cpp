@@ -126,8 +126,13 @@ void Entity::dump(unsigned len) {
 	len += 3;
 	for (unsigned i = 0; i < entities.size(); i++)entities[i]->dump(len);
 	//Logw(pattern, 10);
+
 }
 
+void Entity::setTransform(const Transform& transform_) {
+
+	transform = transform_;
+}
 
 /*
 bool Entity::write(XMLNode* node) {

@@ -14,6 +14,7 @@
 
 #include "DynamicArray.hpp"
 #include "Name.hpp"
+#include "Math.hpp"
 
 
 namespace Verge3D {
