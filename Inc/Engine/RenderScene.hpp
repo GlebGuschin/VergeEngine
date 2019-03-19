@@ -196,14 +196,12 @@ public:
 	RenderScene() {}
 
 	//const AABB& getAABB() { return aabb; }
-
-	//virtual void destroyLight(LightRenderSceneObject* light);
-	//virtual LightRenderSceneObject* createLight();
-
+	
+	virtual LightRenderSceneObject* createLight();
+	virtual void destroyLight(LightRenderSceneObject* light);
 	
 	virtual ParticleSystemRenderSceneObject* createParticleSystem();
-	virtual void destroyParticleSystem(ParticleSystemRenderSceneObject*);
-	
+	virtual void destroyParticleSystem(ParticleSystemRenderSceneObject*);	
 
 	virtual DebugRenderSceneObject* createDebug();
 	virtual void destroyDebug(DebugRenderSceneObject*);

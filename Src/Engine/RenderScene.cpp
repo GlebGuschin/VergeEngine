@@ -58,10 +58,9 @@ void RenderScene::removeObject(RenderSceneObject* object) {
 
 }
 
-
 ParticleSystemRenderSceneObject* RenderScene::createParticleSystem() {
 
-	ParticleSystemRenderSceneObject* p = new ParticleSystemRenderSceneObject(nullptr);
+	ParticleSystemRenderSceneObject* p = new ParticleSystemRenderSceneObject(this);
 
 	addObject(p);
 	return p;
@@ -75,10 +74,9 @@ void RenderScene::destroyParticleSystem(ParticleSystemRenderSceneObject* p) {
 
 }
 
-
 DebugRenderSceneObject* RenderScene::createDebug() {
 
-	DebugRenderSceneObject* d = new DebugRenderSceneObject(nullptr);
+	DebugRenderSceneObject* d = new DebugRenderSceneObject(this);
 	addObject(d);
 	return d;
 }
@@ -102,8 +100,23 @@ void RenderScene::destroyOcclusionArea(OcclusionAreaRenderSceneObject* area) {
 
 }
 
+LightRenderSceneObject* RenderScene::createLight() {
 
+	LightRenderSceneObject* light = new LightRenderSceneObject(this);
 
+	addObject(light);
+
+	return light;
+
+}
+
+void RenderScene::destroyLight(LightRenderSceneObject* light) {
+
+	removeObject(light);
+
+	delete light;
+
+}
 
 void RenderScene::update(float deltaTime) {
 
