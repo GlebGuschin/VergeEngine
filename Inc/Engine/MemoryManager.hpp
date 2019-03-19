@@ -30,21 +30,16 @@ public:
 
 	MemoryBuffer() : size(0), lockCounter(0), ptr(nullptr) {}
 
-	MemoryBuffer(MemoryManager* manager_, void* ptr_, size_t size_, unsigned flags=0) : 
+	MemoryBuffer(MemoryManager* manager_, size_t size_, unsigned flags=0) : 
 		manager(manager_),
 		size(size_), 
-		ptr(ptr_), 
+		ptr(nullptr), 
 		lockCounter(0) {
 	
 	}
 
 	MemoryBuffer(void* ptr_, size_t size_) : size(size_), ptr(ptr_), lockCounter(0) {}
 	~MemoryBuffer();
-	/*
-	~MemoryBuffer() {	
-		lockCounter = 0;
-	}
-	*/
 
 
 	size_t getSize() const { return size; }
@@ -67,6 +62,7 @@ class MemoryManager {
 
 	DynamicArray<MemoryBuffer*> buffers;
 	CoreModule* coreModule;
+
 public:
 
 	MemoryManager(CoreModule* coreModule_) : coreModule(coreModule_) {}
