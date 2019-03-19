@@ -11,8 +11,9 @@ MemoryBuffer::~MemoryBuffer() {
 
 MemoryBuffer* MemoryManager::createMemoryBuffer(size_t size, unsigned flags) {
 
+	void* ptr = malloc(size);
 	MemoryBuffer* buffer = nullptr;
-	buffer = new MemoryBuffer(this, size, flags);
+	buffer = new MemoryBuffer(this, ptr, size, flags);
 
 	buffers.add(buffer);
 
@@ -24,6 +25,9 @@ MemoryBuffer* MemoryManager::createMemoryBuffer(size_t size, unsigned flags) {
 void MemoryManager::destroyMemoryBuffer(MemoryBuffer* buffer) {
 
 	buffers.remove(buffer);
+
+	free(buffer->getPtr());
+
 	int i = 0;
 }
 

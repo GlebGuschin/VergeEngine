@@ -30,10 +30,10 @@ public:
 
 	MemoryBuffer() : size(0), lockCounter(0), ptr(nullptr) {}
 
-	MemoryBuffer(MemoryManager* manager_, size_t size_, unsigned flags=0) : 
+	MemoryBuffer(MemoryManager* manager_, void* ptr_, size_t size_, unsigned flags=0) : 
 		manager(manager_),
 		size(size_), 
-		ptr(nullptr), 
+		ptr(ptr_), 
 		lockCounter(0) {
 	
 	}

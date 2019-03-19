@@ -23,6 +23,8 @@ void CoreModule::shutdown() {
 	delete assetManager;
 	delete memoryManager;
 
+	info(L"CoreModule shutdowned...");
+
 }
 
 void CoreModule::update(float td) {
