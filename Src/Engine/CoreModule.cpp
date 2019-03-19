@@ -11,6 +11,7 @@ bool CoreModule::init(Framework* framework_) {
 	
 	info(L"CoreModule initialized...");
 	
+	memoryManager = new MemoryManager(this);
 	assetManager = new AssetManager(this);
 
 	return true; 
@@ -20,6 +21,7 @@ bool CoreModule::init(Framework* framework_) {
 void CoreModule::shutdown() {
 
 	delete assetManager;
+	delete memoryManager;
 
 }
 

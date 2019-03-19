@@ -5,6 +5,7 @@ using namespace Verge3D;
 namespace Verge3D {
 	void WorldTest();
 	void ParticleSystemTest();
+	void CoreModuleTest(Framework*);
 }
 
 
@@ -46,7 +47,7 @@ void TestApplication::onStart() {
 	//SharedPtr<Material> material2 = materialManager->createMaterial("Content/Materials/test.mat");
 	//WorldTest();
 	ParticleSystemTest();
-
+	CoreModuleTest(getFramework());	
 
 }
 

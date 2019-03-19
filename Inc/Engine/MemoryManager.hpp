@@ -2,9 +2,11 @@
 
 #include "DynamicArray.hpp"
 
+
 namespace Verge3D {
 
 class MemoryManager;
+class CoreModule;
 
 struct MemoryBufferInfo {
 	size_t size;
@@ -64,11 +66,13 @@ public:
 class MemoryManager {
 
 	DynamicArray<MemoryBuffer*> buffers;
-
+	CoreModule* coreModule;
 public:
 
+	MemoryManager(CoreModule* coreModule_) : coreModule(coreModule_) {}
+
 	MemoryBuffer* createMemoryBuffer(size_t size, unsigned flags = 0); 
-	MemoryBuffer* createMemoryBuffer(MemoryBuffer* parentBuffer, size_t size, size_t offset, unsigned flags = 0);
+	//MemoryBuffer* createMemoryBuffer(MemoryBuffer* parentBuffer, size_t size, size_t offset, unsigned flags = 0);
 	void destroyMemoryBuffer(MemoryBuffer*);
 
 };
