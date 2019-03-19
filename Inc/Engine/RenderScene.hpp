@@ -27,6 +27,10 @@ class RenderSceneObject : public Referenceable {
 	float totalTime;
 	RenderScene* renderScene;
 
+protected:
+
+	virtual void onUpdate(float deltaTime) {}
+
 public:
 
 	RenderSceneObject(RenderScene* renderScene_) : renderScene(renderScene_) {}
@@ -43,7 +47,8 @@ public:
 	//virtual void setPosition(const Vector3&) {}
 	//virtual void setRotation(const Quaternion&) {}
 
-	//virtual void update(float deltaTime) {}
+	void update(float deltaTime);
+
 };
 
 

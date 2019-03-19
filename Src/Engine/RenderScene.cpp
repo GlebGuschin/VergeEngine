@@ -20,6 +20,11 @@ void RenderSceneObject::setTransform(const Transform& transform_) {
 
 }
 
+void RenderSceneObject::update(float deltaTime) {
+
+	onUpdate(deltaTime);
+
+}
 
 void DebugRenderSceneObject::addLine(const Vector& v0, const Vector& v1, const Color& c) {
 
@@ -119,6 +124,10 @@ void RenderScene::destroyLight(LightRenderSceneObject* light) {
 }
 
 void RenderScene::update(float deltaTime) {
+
+	for (uint32_t i = 0; i < objects.size(); i++) {
+		objects[i]->update(deltaTime);
+	}
 
 }
 
