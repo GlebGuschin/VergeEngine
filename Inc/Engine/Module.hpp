@@ -19,6 +19,10 @@ protected:
 
 	String name;
 
+	//virtual void onInit() {}
+	//virtual void onShutdown();
+
+
 public:
 
 	Module(const char* name_) {
