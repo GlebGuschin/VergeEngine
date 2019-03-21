@@ -165,6 +165,12 @@ class MaterialAsset : public Asset, public MaterialParams {
 
 public:
 
+	/*
+	void setTexture(A, MaterialTextureType type) {
+		textures[type] = texture;
+	}
+	Texture* getTexture(MaterialTextureType type);
+	*/
 };
 
 
@@ -190,27 +196,10 @@ public:
 
 	MaterialAsset* getAsset() const { return asset; }
 
-	void setTexture(Texture* texture, MaterialTextureType type) {
-		textures[type] = texture;
-	}
+	void setTexture(Texture* texture, MaterialTextureType type);
 	Texture* getTexture(MaterialTextureType type);
 
 	void reloadFromAsset();
-
-	/*
-	void setBlendType(MaterialBlendType blendType_) {
-		blendType = blendType_;
-	}
-
-	MaterialBlendType getBlendType() const { return blendType; }
-	void setAlphaRef(float alphaRef_) { alphaRef = alphaRef_; }
-	float getAlphaRef() const { return alphaRef; }
-	void setTransparency(float v) { opacity = v; }
-	float getTransparency() const { return opacity; }
-	void setTwoSided(bool v) { twoSided = v; }
-	bool getTwoSided() const { return twoSided; }
-	*/
-
 
 	void setCustomParam(const Name& name, const MaterialCustomParam&) {}
 	bool getCustomParam(const Name& name, MaterialCustomParam&) const {}
