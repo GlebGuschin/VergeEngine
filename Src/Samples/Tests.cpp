@@ -9,11 +9,14 @@
 #include "CameraComponent.hpp"
 #include "Framework.hpp"
 #include "CoreModule.hpp"
-
-
+#include "XML.hpp"
 
 
 namespace Verge3D {
+
+
+
+
 
 void WorldTest() {
 
