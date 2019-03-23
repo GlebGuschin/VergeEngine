@@ -5,6 +5,8 @@
 namespace Verge3D {
 
 //typedef String FileName;
+class MemoryBuffer;
+class CoreModule;
 
 class File : public Referenceable {
 
@@ -20,11 +22,16 @@ public:
 class FileSystemManager : public Referenceable {
 
 	DynamicArray<File*> files;
+	CoreModule* coreModule;
 
 public:
 
+		FileSystemManager(CoreModule* coreModule_) : coreModule(coreModule_) {}
+
 		virtual File* createFile(const FileName&);
 		virtual void destroyFile(File*);
+
+		virtual MemoryBuffer* loadFile(const FileName&);
 
 };
 

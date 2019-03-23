@@ -169,7 +169,12 @@ void CoreModuleTest(Framework* framework) {
 
 	SharedPtr<MemoryBuffer> memoryBuffer1 = memoryManager->createMemoryBuffer(1024*1024);
 
+}
+
+void XML_Test(XMLNode* node) {
 
 }
+
+
 
 }

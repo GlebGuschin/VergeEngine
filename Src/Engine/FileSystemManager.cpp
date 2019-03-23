@@ -1,7 +1,11 @@
-#include "FileSystemManager.hpp"
+//#include "FileSystemManager.hpp"
+//#include "MemoryManager.hpp"
+#include "CoreModule.hpp"
+
+#include <Windows.h>
+
 
 namespace Verge3D {
-
 
 		/*
 	bool File::read() {
@@ -22,6 +26,64 @@ File* FileSystemManager::createFile(const FileName&) {
 void FileSystemManager::destroyFile(File*) {
 }
 
+MemoryBuffer* FileSystemManager::loadFile(const FileName& fileName) {
 
+	MemoryBuffer* buffer = nullptr;
+	HANDLE hFile;
+
+	hFile = CreateFileW(fileName.getName().w_str(),
+		GENERIC_READ,
+		NULL,
+		NULL,
+		OPEN_EXISTING,
+		NULL,
+		NULL
+	);
+
+	if (hFile == INVALID_HANDLE_VALUE) {
+		return(NULL);
+	}
+
+	DWORD fileSize = GetFileSize(hFile, NULL);
+
+	/*
+	buffer = coreModule->getmemoryManager->createBuffer(fileSize);
+
+	//XRESULT res = createBuffer( fileSize, &buffer );
+	XRESULT res = RES_OK;
+
+	if (res != RES_OK) {
+		return(NULL);
+	}
+
+	LPVOID ptr = (LPVOID)buffer->lock();
+
+
+	DWORD length;
+
+
+	ReadFile(hFile,
+		ptr,
+		fileSize,
+		&length,
+		NULL);
+
+	buffer->unlock();
+
+	if (length != fileSize) {
+		return(NULL);
+	}
+
+	CloseHandle(hFile);
+
+	//*fileBuffer = buffer;
+
+	//buffer->addRef();
+	loadFileDesc.buffer = buffer;
+	*/
+
+	return buffer;
+
+}
 
 }
