@@ -106,10 +106,43 @@ void DX11RenderModule::_compileShader(MemoryBuffer* sourceBuffer, ShaderType sha
 	const char* entryPointNames[] = {"VSMain", "PSMain"};
 	const char* targetNames[] = { "vs_4_0", "ps_4_0" };
 
+	const D3D_SHADER_MACRO *pDefines = nullptr;
+
 	ID3DBlob* codeBlob = nullptr;
 	ID3DBlob* errorBlob = nullptr;
+	ID3DBlob* textBlob = nullptr;
 
-	HRESULT res = D3DCompile(
+	UINT flags1 = 0;
+#ifdef _DEBUG
+	flags1 |= D3DCOMPILE_DEBUG;
+#endif
+
+	HRESULT res = S_OK;
+
+	res = D3DPreprocess(
+		sourceBuffer->getPtr(),
+		sourceBuffer->getSize(),
+		"",
+		//pDefines,
+		//pInclude,
+		nullptr,
+		nullptr,
+		&textBlob,
+		&errorBlob
+	);
+
+	//std::string text;
+	//text.resize(textBlob->getBufferSize());
+	uint32_t hashCode = 0;
+	size_t size = textBlob->GetBufferSize();
+	unsigned char* ptr = (unsigned char*)textBlob->GetBufferPointer();
+	for (size_t i = 0; i < size; i++) {
+		hashCode ^= ptr[i];
+	}
+	//hashCode = hashCode % 128;
+
+
+	res = D3DCompile(
 		sourceBuffer->getPtr(), 
 		sourceBuffer->getSize(), 
 		"", 
@@ -117,7 +150,7 @@ void DX11RenderModule::_compileShader(MemoryBuffer* sourceBuffer, ShaderType sha
 		nullptr, 
 		entryPointNames[(uint32_t)shaderType],
 		targetNames[(uint32_t)shaderType],
-		0, 
+		flags1, 
 		0, 
 		&codeBlob, 
 		&errorBlob);
@@ -130,6 +163,7 @@ void DX11RenderModule::_compileShader(MemoryBuffer* sourceBuffer, ShaderType sha
 	}
 
 	if (codeBlob) {
+			info(L"Shader code blob has size %u", codeBlob->GetBufferSize());
 			SAFE_RELEASE(codeBlob);
 	}
 

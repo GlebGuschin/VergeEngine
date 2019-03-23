@@ -62,17 +62,12 @@ void Logger::log(const LogItem& logItem) {
 	/*
 	stream << "[" << GetLogTypeString(logItem.type) << "]  ";
 	stream << logItem.message.w_str() << std::endl;
-	stream.flush();
+	stream.flush();s
 	*/
 
 	OutputDebugStringW(str.c_str());
 	OutputDebugStringW(L"\n");
 
-	/*
-	stream << "[" << GetLogTypeString(type) << "]  ";
-	stream << outputString << std::endl;
-	stream.flush();
-	*/
 }
 
 void Logger::info(const wchar_t* format, ...) {
