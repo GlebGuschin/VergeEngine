@@ -89,8 +89,8 @@ class DX11RenderModule : public RenderModule {
 
 public:
 
+	DX11RenderModule() : RenderModule("DX11RenderModule") {}
 	~DX11RenderModule() {}
-
 
 	bool init(Framework* framework);
 	void shutdown();

@@ -349,15 +349,15 @@ void Window::onMouseButton(const MousePosition& mousePosition, MouseButtonType b
 
 	switch (actionType) {
 		case InputActionType::Press:
-			DebugLog("Press mouse(%i,%i)", mousePosition.x, mousePosition.y); 
+			//DebugLog("Press mouse(%i,%i)", mousePosition.x, mousePosition.y); 
 			break;
 
 		case InputActionType::Release:
-			DebugLog("Release mouse(%i,%i)", mousePosition.x, mousePosition.y);
+			//DebugLog("Release mouse(%i,%i)", mousePosition.x, mousePosition.y);
 			break;
 
 		case InputActionType::Double:
-			DebugLog("Double mouse(%i,%i)", mousePosition.x, mousePosition.y); 
+			//DebugLog("Double mouse(%i,%i)", mousePosition.x, mousePosition.y); 
 			break;
 	};
 
@@ -372,13 +372,13 @@ void Window::onKeyboard(KEY_TYPE buttonType, INPUT_ACTION_TYPE actionType, unsig
 
 void Window::onMouseWheel(const MousePosition& mousePosition, int value) {
 
-	DebugLog("Window::onMouseWheel(%i,%i,%i)", mousePosition.x, mousePosition.y, value);
+	//DebugLog("Window::onMouseWheel(%i,%i,%i)", mousePosition.x, mousePosition.y, value);
 
 }
 
 void Window::onMouseMove(const MousePosition& mousePosition) {
 
-	DebugLog("Mouse move(%i,%i)", mousePosition.x, mousePosition.y); 
+	//DebugLog("Mouse move(%i,%i)", mousePosition.x, mousePosition.y); 
 
 }
 
@@ -388,7 +388,7 @@ void Window::onResize(const WindowSize& windowSize) {
 		listeners[i]->onResize(this, windowSize);
 	}
 
-	DebugLog("Window id=%u, size %u,%u", hWnd, windowSize.width, windowSize.height);
+	//DebugLog("Window id=%u, size %u,%u", hWnd, windowSize.width, windowSize.height);
 }
 
 void Window::onPaint() {

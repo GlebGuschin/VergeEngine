@@ -37,7 +37,7 @@ protected:
 
 public:
 
-	RenderModule() : Module("RenderModule") {
+	RenderModule(const char* name_) : Module(name_) {
 	
 	}
 

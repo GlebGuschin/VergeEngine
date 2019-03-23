@@ -55,7 +55,7 @@ void Logger::log(LogType type, const wchar_t* format, ...) {
 
 void Logger::log(const LogItem& logItem) {
 
-	std::wstring str = std::wstring(L"[") + GetLogTypeString(logItem.type) + std::wstring(L" ]");
+	std::wstring str = std::wstring(L"[") + GetLogTypeString(logItem.type) + std::wstring(L"] ");
 	str += logItem.message.w_str();
 
 	stream << str << std::endl;
