@@ -20,13 +20,21 @@ namespace Verge3D {
 
 #define SAFE_RELEASE(p) if(p) p->Release(); p = nullptr;
 
-
 enum class ShaderType : uint32_t {
 		Vertex,
 		Pixel,
-		//Compute
+		Geometry,
+		Hull,
+		Domain,
+		Compute,
+		Max
 };
 
+struct ShaderCompileInfo {
+	ShaderType type;
+	const char* entryPointName;
+	ShaderCompileInfo() : entryPointName(nullptr) {}
+};
 
 
 class DX11RenderContext : public RenderContext {
@@ -97,14 +105,18 @@ public:
 	void drawScene(RenderScene*, const SceneView&);
 
 
-	void _compileShader(MemoryBuffer* sourceBuffer, ShaderType shaderType);
+	void _compileShader(MemoryBuffer* sourceBuffer, const ShaderCompileInfo& info);
 
 };
 
-void DX11RenderModule::_compileShader(MemoryBuffer* sourceBuffer, ShaderType shaderType) {
+void DX11RenderModule::_compileShader(MemoryBuffer* sourceBuffer, const ShaderCompileInfo& info) {
 
-	const char* entryPointNames[] = {"VSMain", "PSMain"};
-	const char* targetNames[] = { "vs_4_0", "ps_4_0" };
+	const char* entryPointNames[] = {"VSMain", "PSMain","GSMain", "HSMain", "DSMain", "CSMain" };
+	const char* targetNames[] = { "vs_5_0", "ps_5_0", "gs_5_0", "hs_5_0", "ds_5_0", "cs_5_0" };
+
+	const char* entryPointName = info.entryPointName ? info.entryPointName : entryPointNames[(uint32_t)info.type];
+	//const char* targetNames[] = { "vs_4_0", "ps_4_0" };
+
 
 	const D3D_SHADER_MACRO *pDefines = nullptr;
 
@@ -148,8 +160,8 @@ void DX11RenderModule::_compileShader(MemoryBuffer* sourceBuffer, ShaderType sha
 		"", 
 		nullptr, 
 		nullptr, 
-		entryPointNames[(uint32_t)shaderType],
-		targetNames[(uint32_t)shaderType],
+		entryPointName,
+		targetNames[(uint32_t)info.type],
 		flags1, 
 		0, 
 		&codeBlob, 
@@ -158,12 +170,12 @@ void DX11RenderModule::_compileShader(MemoryBuffer* sourceBuffer, ShaderType sha
 	if (errorBlob) {
 			//error()
 			String str((const char*)errorBlob->GetBufferPointer());
-			error(str.w_str());
+			logError(str.w_str());
 			SAFE_RELEASE(errorBlob);
 	}
 
 	if (codeBlob) {
-			info(L"Shader code blob has size %u", codeBlob->GetBufferSize());
+			logInfo(L"Shader code blob has size %u", codeBlob->GetBufferSize());
 			SAFE_RELEASE(codeBlob);
 	}
 
@@ -225,18 +237,43 @@ bool DX11RenderModule::init(Framework* framework) {
 		featureLevels2,
 		&immediateContext);
 
-	info(L"DX11RenderModule intialized...");
-	error(L"Failed");
+	logInfo(L"DX11RenderModule intialized...");
+	//error(L"Failed");
 
 
 	//SharedPtr<MemoryBuffer> mb = getFramework()->findModule<CoreModule>()->getFileSystemManager()->loadFile("Shader.fx");
-	SharedPtr<MemoryBuffer> mb = getFramework()->findModule<CoreModule>()->getFileSystemManager()->loadFile("RenderCascadeScene.hlsl");
+	SharedPtr<MemoryBuffer> mb;
+	mb = getFramework()->findModule<CoreModule>()->getFileSystemManager()->loadFile("RenderCascadeScene.hlsl");
 
 	///SharedPtr<MemoryBuffer> mb = getFramework()->findModule<CoreModule>()->getFileSystemManager()->loadFile("Shader.fx");
-	//for (int i = 0; i < 100; i++) {
-		_compileShader(mb, ShaderType::Vertex);
-		_compileShader(mb, ShaderType::Pixel);
-	//}
+	ShaderCompileInfo shaderCompileInfo;
+	shaderCompileInfo.type = ShaderType::Vertex;
+	_compileShader(mb, shaderCompileInfo);
+	shaderCompileInfo.type = ShaderType::Pixel;
+	_compileShader(mb, shaderCompileInfo);
+
+	mb = getFramework()->findModule<CoreModule>()->getFileSystemManager()->loadFile("SimpleBezier11.hlsl");
+
+	shaderCompileInfo.type = ShaderType::Vertex;
+	shaderCompileInfo.entryPointName = "BezierVS";
+	_compileShader(mb, shaderCompileInfo);
+
+	shaderCompileInfo.type = ShaderType::Pixel;
+	shaderCompileInfo.entryPointName = "BezierPS";
+	_compileShader(mb, shaderCompileInfo);
+
+	shaderCompileInfo.type = ShaderType::Hull;
+	shaderCompileInfo.entryPointName = "BezierHS";
+	_compileShader(mb, shaderCompileInfo);
+
+	shaderCompileInfo.type = ShaderType::Domain;
+	shaderCompileInfo.entryPointName = "BezierDS";
+	_compileShader(mb, shaderCompileInfo);
+
+
+	//_compileShader(mb, ShaderType::Vertex);
+		//_compileShader(mb, ShaderType::Pixel);
+	
 	
 
 	return true;

@@ -26,7 +26,7 @@ Texture* TextureManager::createTexture(const AssetName& name) {
 
 	textureAsset->load();
 
-	renderModule->info(L"Texture created...");	
+	renderModule->logInfo(L"Texture created...");
 
 	for (uint32_t i = 0; i < textures.size(); i++) {
 		if (textures[i]->getAsset() == textureAsset) {

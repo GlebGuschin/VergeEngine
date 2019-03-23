@@ -9,7 +9,7 @@ bool CoreModule::init(Framework* framework_) {
 
 	Module::init(framework_);
 	
-	info(L"CoreModule initialized...");
+	logInfo(L"CoreModule initialized...");
 	
 	memoryManager = new MemoryManager(this);
 	fileSystemManager = new FileSystemManager(this);
@@ -25,7 +25,7 @@ void CoreModule::shutdown() {
 	delete fileSystemManager;
 	delete memoryManager;
 
-	info(L"CoreModule shutdowned...");
+	logInfo(L"CoreModule shutdowned...");
 
 }
 

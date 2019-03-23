@@ -4,7 +4,7 @@
 namespace Verge3D {
 
 
-void Module::info(const wchar_t* format, ...) {
+void Module::logInfo(const wchar_t* format, ...) {
 
 	wchar_t outputString[1024];
 	va_list argList;
@@ -17,7 +17,7 @@ void Module::info(const wchar_t* format, ...) {
 
 }
 
-void Module::error(const wchar_t* format, ...) {
+void Module::logError(const wchar_t* format, ...) {
 
 	wchar_t outputString[1024];
 	va_list argList;
@@ -30,7 +30,7 @@ void Module::error(const wchar_t* format, ...) {
 
 }
 
-void Module::warning(const wchar_t* format, ...) {
+void Module::logWarning(const wchar_t* format, ...) {
 
 	wchar_t outputString[1024];
 	va_list argList;

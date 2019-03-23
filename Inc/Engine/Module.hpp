@@ -34,9 +34,9 @@ public:
 	virtual void shutdown() {}
 	virtual void update(float td) {}
 
-	void info(const wchar_t* format, ...);
-	void error(const wchar_t* format, ...);
-	void warning(const wchar_t* format, ...);
+	void logInfo(const wchar_t* format, ...);
+	void logError(const wchar_t* format, ...);
+	void logWarning(const wchar_t* format, ...);
 
 	Framework* getFramework() const { return framework; }
 
