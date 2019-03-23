@@ -233,10 +233,10 @@ bool DX11RenderModule::init(Framework* framework) {
 	SharedPtr<MemoryBuffer> mb = getFramework()->findModule<CoreModule>()->getFileSystemManager()->loadFile("RenderCascadeScene.hlsl");
 
 	///SharedPtr<MemoryBuffer> mb = getFramework()->findModule<CoreModule>()->getFileSystemManager()->loadFile("Shader.fx");
-	for (int i = 0; i < 100; i++) {
+	//for (int i = 0; i < 100; i++) {
 		_compileShader(mb, ShaderType::Vertex);
 		_compileShader(mb, ShaderType::Pixel);
-	}
+	//}
 	
 
 	return true;
