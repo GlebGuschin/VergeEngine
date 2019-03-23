@@ -1,5 +1,7 @@
 #include "Logger.hpp"
 
+#include <Windows.h>
+
 namespace Verge3D {
 
 //static const BufferSize = 1024;
@@ -24,6 +26,7 @@ const wchar_t* Logger::GetLogTypeString(LogType type) {
 	assert(0);
 
 	return L"";
+
 }
 
 void Logger::log(LogType type, const String& message) {
@@ -52,9 +55,18 @@ void Logger::log(LogType type, const wchar_t* format, ...) {
 
 void Logger::log(const LogItem& logItem) {
 
+	std::wstring str = std::wstring(L"[") + GetLogTypeString(logItem.type) + std::wstring(L" ]");
+	str += logItem.message.w_str();
+
+	stream << str << std::endl;
+	/*
 	stream << "[" << GetLogTypeString(logItem.type) << "]  ";
 	stream << logItem.message.w_str() << std::endl;
 	stream.flush();
+	*/
+
+	OutputDebugStringW(str.c_str());
+	OutputDebugStringW(L"\n");
 
 	/*
 	stream << "[" << GetLogTypeString(type) << "]  ";

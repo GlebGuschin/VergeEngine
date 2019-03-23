@@ -103,7 +103,7 @@ public:
 
 void DX11RenderModule::_compileShader(MemoryBuffer* sourceBuffer, ShaderType shaderType) {
 
-	const char* entryPointNames[] = {"VS", "PS"};
+	const char* entryPointNames[] = {"VSMain", "PSMain"};
 	const char* targetNames[] = { "vs_4_0", "ps_4_0" };
 
 	ID3DBlob* codeBlob = nullptr;
@@ -125,6 +125,7 @@ void DX11RenderModule::_compileShader(MemoryBuffer* sourceBuffer, ShaderType sha
 	if (errorBlob) {
 			//error()
 			String str((const char*)errorBlob->GetBufferPointer());
+			error(str.w_str());
 			SAFE_RELEASE(errorBlob);
 	}
 
@@ -194,7 +195,8 @@ bool DX11RenderModule::init(Framework* framework) {
 	error(L"Failed");
 
 
-	SharedPtr<MemoryBuffer> mb = getFramework()->findModule<CoreModule>()->getFileSystemManager()->loadFile("Shader.fx");
+	//SharedPtr<MemoryBuffer> mb = getFramework()->findModule<CoreModule>()->getFileSystemManager()->loadFile("Shader.fx");
+	SharedPtr<MemoryBuffer> mb = getFramework()->findModule<CoreModule>()->getFileSystemManager()->loadFile("RenderCascadeScene.hlsl");
 
 	///SharedPtr<MemoryBuffer> mb = getFramework()->findModule<CoreModule>()->getFileSystemManager()->loadFile("Shader.fx");
 	for (int i = 0; i < 100; i++) {
