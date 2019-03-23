@@ -14,7 +14,7 @@ bool CoreModule::init(Framework* framework_) {
 	memoryManager = new MemoryManager(this);
 	fileSystemManager = new FileSystemManager(this);
 	assetManager = new AssetManager(this);
-
+	
 	return true; 
 
 }

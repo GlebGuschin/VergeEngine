@@ -46,15 +46,13 @@ MemoryBuffer* FileSystemManager::loadFile(const FileName& fileName) {
 
 	DWORD fileSize = GetFileSize(hFile, NULL);
 
+	buffer = coreModule->getMemoryManager()->createBuffer(fileSize);
+
 	/*
-	buffer = coreModule->getmemoryManager->createBuffer(fileSize);
-
-	//XRESULT res = createBuffer( fileSize, &buffer );
-	XRESULT res = RES_OK;
-
 	if (res != RES_OK) {
 		return(NULL);
 	}
+	*/
 
 	LPVOID ptr = (LPVOID)buffer->lock();
 
@@ -77,10 +75,6 @@ MemoryBuffer* FileSystemManager::loadFile(const FileName& fileName) {
 	CloseHandle(hFile);
 
 	//*fileBuffer = buffer;
-
-	//buffer->addRef();
-	loadFileDesc.buffer = buffer;
-	*/
 
 	return buffer;
 

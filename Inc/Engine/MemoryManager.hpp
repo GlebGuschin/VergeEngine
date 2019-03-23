@@ -67,9 +67,9 @@ public:
 
 	MemoryManager(CoreModule* coreModule_) : coreModule(coreModule_) {}
 
-	MemoryBuffer* createMemoryBuffer(size_t size, unsigned flags = 0); 
-	//MemoryBuffer* createMemoryBuffer(MemoryBuffer* parentBuffer, size_t size, size_t offset, unsigned flags = 0);
-	void destroyMemoryBuffer(MemoryBuffer*);
+	MemoryBuffer* createBuffer(size_t size, unsigned flags = 0); 
+	//MemoryBuffer* createBuffer(MemoryBuffer* parentBuffer, size_t size, size_t offset, unsigned flags = 0);
+	void destroyBuffer(MemoryBuffer*);
 
 };
 

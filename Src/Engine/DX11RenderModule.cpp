@@ -1,5 +1,7 @@
 
 #include "RenderModule.hpp"
+#include "CoreModule.hpp"
+#include "Framework.hpp"
 
 #include <d3d11.h>
 #include <dxgi.h>
@@ -17,6 +19,13 @@ namespace Verge3D {
 #pragma comment( lib, "d3dcompiler.lib" )
 
 #define SAFE_RELEASE(p) if(p) p->Release(); p = nullptr;
+
+
+enum class ShaderType : uint32_t {
+		Vertex,
+		Pixel,
+		//Compute
+};
 
 
 
@@ -86,8 +95,44 @@ public:
 	void endFrame();
 	
 	void drawScene(RenderScene*, const SceneView&);
+
+
+	void _compileShader(MemoryBuffer* sourceBuffer, ShaderType shaderType);
+
 };
 
+void DX11RenderModule::_compileShader(MemoryBuffer* sourceBuffer, ShaderType shaderType) {
+
+	const char* entryPointNames[] = {"VS", "PS"};
+	const char* targetNames[] = { "vs_4_0", "ps_4_0" };
+
+	ID3DBlob* codeBlob = nullptr;
+	ID3DBlob* errorBlob = nullptr;
+
+	HRESULT res = D3DCompile(
+		sourceBuffer->getPtr(), 
+		sourceBuffer->getSize(), 
+		"", 
+		nullptr, 
+		nullptr, 
+		entryPointNames[(uint32_t)shaderType],
+		targetNames[(uint32_t)shaderType],
+		0, 
+		0, 
+		&codeBlob, 
+		&errorBlob);
+
+	if (errorBlob) {
+			//error()
+			String str((const char*)errorBlob->GetBufferPointer());
+			SAFE_RELEASE(errorBlob);
+	}
+
+	if (codeBlob) {
+			SAFE_RELEASE(codeBlob);
+	}
+
+}
 
 bool DX11RenderModule::init(Framework* framework) {
 
@@ -147,6 +192,16 @@ bool DX11RenderModule::init(Framework* framework) {
 
 	info(L"DX11RenderModule intialized...");
 	error(L"Failed");
+
+
+	SharedPtr<MemoryBuffer> mb = getFramework()->findModule<CoreModule>()->getFileSystemManager()->loadFile("Shader.fx");
+
+	///SharedPtr<MemoryBuffer> mb = getFramework()->findModule<CoreModule>()->getFileSystemManager()->loadFile("Shader.fx");
+	for (int i = 0; i < 100; i++) {
+		_compileShader(mb, ShaderType::Vertex);
+		_compileShader(mb, ShaderType::Pixel);
+	}
+	
 
 	return true;
 }

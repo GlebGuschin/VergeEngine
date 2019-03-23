@@ -167,7 +167,7 @@ void CoreModuleTest(Framework* framework) {
 	CoreModule* coreModule = framework->findModule<CoreModule>();
 	MemoryManager* memoryManager = coreModule->getMemoryManager();
 
-	SharedPtr<MemoryBuffer> memoryBuffer1 = memoryManager->createMemoryBuffer(1024*1024);
+	SharedPtr<MemoryBuffer> memoryBuffer1 = memoryManager->createBuffer(1024*1024);
 
 }
 

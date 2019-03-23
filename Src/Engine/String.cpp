@@ -38,9 +38,7 @@ String String::Format(const wchar_t* formatString, ...) {
 	return String( outputString );	
 }
 
-
-/*
-bool String::splitPathFileExt( String& path, String& file, String& ext ) const {
+bool String::splitPathFileExt( String& path, String& file, String& ext, String& volume) const {
 	
 	const wchar_t* dotChar = L".";
 	const wchar_t* slashChar = L"/";
@@ -68,7 +66,7 @@ bool String::splitPathFileExt( String& path, String& file, String& ext ) const {
 
 	return true;
 }
-*/
+
 
 //void Split(const String& string, DynamicArray<String>& strings, wchar_t delimiter);
 

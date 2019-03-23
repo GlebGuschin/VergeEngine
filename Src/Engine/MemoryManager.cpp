@@ -5,11 +5,11 @@ namespace Verge3D {
 MemoryBuffer::~MemoryBuffer() {
 
 	check(manager);
-	manager->destroyMemoryBuffer(this);
+	manager->destroyBuffer(this);
 
 }
 
-MemoryBuffer* MemoryManager::createMemoryBuffer(size_t size, unsigned flags) {
+MemoryBuffer* MemoryManager::createBuffer(size_t size, unsigned flags) {
 
 	void* ptr = malloc(size);
 	MemoryBuffer* buffer = nullptr;
@@ -20,9 +20,9 @@ MemoryBuffer* MemoryManager::createMemoryBuffer(size_t size, unsigned flags) {
 	return buffer;
 
 }
-	//MemoryBuffer* createMemoryBuffer(MemoryBuffer* parentBuffer, size_t size, size_t offset, unsigned flags = 0);
+	//MemoryBuffer* createBuffer(MemoryBuffer* parentBuffer, size_t size, size_t offset, unsigned flags = 0);
 
-void MemoryManager::destroyMemoryBuffer(MemoryBuffer* buffer) {
+void MemoryManager::destroyBuffer(MemoryBuffer* buffer) {
 
 	buffers.remove(buffer);
 
