@@ -2,6 +2,7 @@
 #include "Common.hpp"
 #include "String.hpp"
 #include "Name.hpp"
+#include "MemoryManager.hpp"
 
 
 namespace Verge3D {
@@ -43,7 +44,7 @@ class Asset : public Referenceable {
 
 protected:
 
-		//SharedPtr<MemoryBuffer> defaultMemoryBuffer;
+	SharedPtr<MemoryBuffer> defaultMemoryBuffer;
 		//MemoryBuffer* defaultMemoryBuffer;
 
 	virtual void onLoad() {}

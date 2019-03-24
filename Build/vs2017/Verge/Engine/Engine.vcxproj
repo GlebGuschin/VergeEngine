@@ -234,6 +234,7 @@
     <ClCompile Include="..\..\..\..\Src\Engine\RenderWindow.cpp" />
     <ClCompile Include="..\..\..\..\Src\Engine\StandaloneApplication.cpp" />
     <ClCompile Include="..\..\..\..\Src\Engine\String.cpp" />
+    <ClCompile Include="..\..\..\..\Src\Engine\Texture.cpp" />
     <ClCompile Include="..\..\..\..\Src\Engine\TextureManager.cpp" />
     <ClCompile Include="..\..\..\..\Src\Engine\Window.cpp" />
     <ClCompile Include="..\..\..\..\Src\Engine\World.cpp" />

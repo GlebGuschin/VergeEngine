@@ -80,4 +80,36 @@ MemoryBuffer* FileSystemManager::loadFile(const FileName& fileName) {
 
 }
 
+/*
+	FindClose( hFile );
+
+}
+
+bool XFileSearch::findFirstFile( const XResourceName &fileMask ) {
+
+	XResourceName resolvedResourceName;
+
+	bool bResolved = manager->resolveFile( fileMask, resolvedResourceName );
+
+	hFile = FindFirstFileW( fileMask.getName(), &findData );
+
+	//return( hFile != 0xFFFFFFFF );
+	return( hFile != NULL );
+
+}
+
+
+bool XFileSearch::findNextFile() {
+
+	BOOL bFound = FindNextFileW( hFile, &findData );
+	if( !bFound ) return( false );
+
+
+	if( !( findData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY ) ) {
+			current = (XWCHAR*)&findData.cFileName[ 0 ];
+	}
+
+
+*/
+
 }

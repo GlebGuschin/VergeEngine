@@ -35,6 +35,10 @@ struct TextureInfo {
 
 class TextureAsset : public Asset {
 
+protected:
+
+	void onLoad();
+
 public:
 
 	TextureAsset(const AssetName& name, AssetManager* manager) : Asset(name, manager) {}
