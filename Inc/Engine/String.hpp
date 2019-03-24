@@ -110,6 +110,7 @@ public:
 	const String& getExt() const { return ext; }
 
 	bool operator<(const FileName& rhs) const { return( name < rhs.name); }
+	bool operator==(const FileName& rhs) const { return(name == rhs.name); }
 
 };
 

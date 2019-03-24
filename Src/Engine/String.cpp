@@ -48,20 +48,37 @@ bool String::splitPathFileExt( String& path, String& file, String& ext, String& 
 	size_t dotPos = string.find_last_of(dotChar);
 	size_t slashPos = string.find_last_of(slashChar);
 
-	if (dotPos == String::StringType::npos || slashPos == String::StringType::npos ) {
-		return false;
+	//if (dotPos == String::StringType::npos || slashPos == String::StringType::npos ) {
+
+	if (dotPos != String::StringType::npos) {
+
+		for (size_t i = dotPos + 1; i < string.size(); i++) {
+			ext.string += string[i];			
+		}
+		//file.string = string;	
+	} else {
+		dotPos = string.size(); // hack
 	}
 
-	for (size_t i = dotPos + 1; i < string.size(); i++) {
-		ext.string += string[ i ];
-	}
+	
+	
+	if (slashPos != String::StringType::npos) {
 
-	for (size_t i = 0; i < slashPos; i++) {
-		path.string += string[i];
-	}
+		for (size_t i = 0; i < slashPos; i++) {
+			path.string += string[i];
+		}
 
-	for (size_t i = slashPos +1; i < dotPos; i++) {
-		file.string += string[i];
+		for (size_t i = slashPos + 1; i < dotPos; i++) {
+			file.string += string[i];
+		}
+
+	} else {
+
+		for (size_t i = 0; i < dotPos; i++) {
+			file.string += string[i];
+		}
+
+
 	}
 
 	return true;
@@ -116,5 +133,7 @@ String::String(const String& str) {
 
 	string = str.string;
 }
+
+//bool StringisEqual(const String&) const;
 
 }

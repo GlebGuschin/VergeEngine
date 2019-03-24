@@ -33,6 +33,7 @@ public:
 
 		virtual MemoryBuffer* loadFile(const FileName&);
 
+		virtual bool collectFiles(const String& path, const String& ext, DynamicArray<FileName>&, bool recursive = false);
 
 };
 

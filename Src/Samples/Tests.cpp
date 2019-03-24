@@ -171,6 +171,17 @@ void CoreModuleTest(Framework* framework) {
 
 }
 
+void FileSystemManagerTest(Framework* framework) {
+
+	CoreModule* coreModule = framework->findModule<CoreModule>();
+	FileSystemManager* fileSystemManager = coreModule->getFileSystemManager();
+
+	DynamicArray<FileName> fileNames;
+	fileSystemManager->collectFiles(String("Content/Textures"), String("dds"), fileNames, true);
+	int i = 0;
+
+}
+
 void XML_Test(XMLNode* node) {
 
 }

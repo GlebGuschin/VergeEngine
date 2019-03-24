@@ -6,6 +6,7 @@ namespace Verge3D {
 	void WorldTest();
 	void ParticleSystemTest();
 	void CoreModuleTest(Framework*);
+	void FileSystemManagerTest(Framework*);
 }
 
 
@@ -48,6 +49,9 @@ void TestApplication::onStart() {
 	//WorldTest();
 	ParticleSystemTest();
 	CoreModuleTest(getFramework());	
+	FileSystemManagerTest(getFramework());
+	//getFramework()->findModule<CoreModule>()-
+
 
 }
 
