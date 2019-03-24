@@ -75,6 +75,7 @@ MemoryBuffer* FileSystemManager::loadFile(const FileName& fileName) {
 	CloseHandle(hFile);
 
 	//*fileBuffer = buffer;
+	DebugLog("Loaded file %ws", fileName.getName().w_str());
 
 	return buffer;
 

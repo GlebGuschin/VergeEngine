@@ -178,6 +178,12 @@ void FileSystemManagerTest(Framework* framework) {
 
 	DynamicArray<FileName> fileNames;
 	fileSystemManager->collectFiles(String("Content/Textures"), String("dds"), fileNames, true);
+	DynamicArray<SharedPtr<MemoryBuffer>> fileBuffers;
+	for(uint32_t i = 0; i < fileNames.size(); i++) {
+		MemoryBuffer* buffer = fileSystemManager->loadFile(fileNames[i]);
+		//fileBuffers.add(SharedPtr<MemoryBuffer>(buffer));
+		fileBuffers.add(buffer);
+	}
 	int i = 0;
 
 }
