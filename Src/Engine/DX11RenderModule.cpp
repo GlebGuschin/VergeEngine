@@ -20,6 +20,51 @@ namespace Verge3D {
 
 #define SAFE_RELEASE(p) if(p) p->Release(); p = nullptr;
 
+
+class ShaderMacros {
+
+		struct ShaderMacro {
+			Name name;
+			std::string value;
+			ShaderMacro(const Name& name_, const char* value_) : name(name_), value(value_) {}
+
+			bool operator<(const ShaderMacro& other) const {
+				return name < other.name;
+			}
+
+		};
+
+		std::vector<ShaderMacro> macros;
+
+		void sort() {
+			std::sort(macros.begin(), macros.end());
+		}
+
+	public:
+
+		void addMacro(const Name& name, const char* value) {
+			macros.push_back(ShaderMacro(name, value));
+			sort();
+		}
+
+		void getString(std::string& string) const {
+
+			string.clear();
+
+			for (size_t i = 0; i < macros.size(); i++) {
+				string += macros[i].name;
+				string += "=";
+				string += macros[i].value;
+				if (i != macros.size() - 1) {
+					string += ";";
+				}
+			}
+
+		}
+
+};
+
+
 enum class ShaderType : uint32_t {
 		Vertex,
 		Pixel,
@@ -110,6 +155,14 @@ public:
 };
 
 void DX11RenderModule::_compileShader(MemoryBuffer* sourceBuffer, const ShaderCompileInfo& info) {
+
+	ShaderMacros shaderMacros;
+	shaderMacros.addMacro("USE_ALPHATEST", "1");
+	shaderMacros.addMacro("NUM_LIGHTS", "8");
+	shaderMacros.addMacro("USE_VOLUMETRIC_FOG", "1");
+
+	std::string str;
+	shaderMacros.getString(str);
 
 	const char* entryPointNames[] = {"VSMain", "PSMain","GSMain", "HSMain", "DSMain", "CSMain" };
 	const char* targetNames[] = { "vs_5_0", "ps_5_0", "gs_5_0", "hs_5_0", "ds_5_0", "cs_5_0" };
