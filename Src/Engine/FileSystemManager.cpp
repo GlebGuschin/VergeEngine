@@ -7,23 +7,67 @@
 
 namespace Verge3D {
 
-		/*
-	bool File::read() {
+File::~File() {
 
-		}
+	manager->destroyFile(this);
 
-			bool File::write();
-			size_t File::getSize();
-	
-	};
-	*/
-
-File* FileSystemManager::createFile(const FileName&) {
-
-	return nullptr;
 }
 
-void FileSystemManager::destroyFile(File*) {
+bool File::open(const FileName& name_, FileAccessType fileAccessType_) {
+
+	return true;
+}
+
+void File::close() {
+
+}
+
+void File::flush() {
+
+}
+
+/*
+virtual bool read(size_t size, void* ptr);
+virtual bool write(size_t size, const void* ptr);
+virtual size_t getSize();
+virtual void setPos(size_t offset);
+*/
+
+bool File::read(size_t size, void* ptr) {
+
+	bool result = false;
+	return result;
+
+}
+
+bool File::write(size_t size, const void* ptr) {
+
+	bool result = false;
+	return result;
+
+}
+
+/*
+size_t File::getSize() {
+
+}
+*/
+	
+
+File* FileSystemManager::createFile() {
+
+	File* file = new File(this);
+
+	files.add(file);
+
+	return nullptr;
+
+}
+
+void FileSystemManager::destroyFile(File* file) {
+
+	files.remove(file);
+
 }
 
 MemoryBuffer* FileSystemManager::loadFile(const FileName& fileName) {

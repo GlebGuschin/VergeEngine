@@ -7,6 +7,7 @@ namespace Verge3D {
 
 class MemoryManager;
 class CoreModule;
+class File;
 
 struct MemoryBufferInfo {
 	size_t size;
@@ -15,7 +16,7 @@ struct MemoryBufferInfo {
 
 
 
-class MemoryBuffer : public Referenceable {
+class MemoryBuffer : public Referenceable { 
 //class MemoryBuffer {
 
 	size_t size;
