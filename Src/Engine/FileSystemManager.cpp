@@ -13,10 +13,11 @@ File::~File() {
 
 }
 
-bool File::open(const FileName& fileName_, FileAccessType fileAccessType_) {
+bool File::open(const FileName& fileName_, FileAccessType fileAccessType_, bool map_) {
 
 	DWORD access = fileAccessType_ == FileAccessType::Read ? GENERIC_READ : GENERIC_WRITE;
 	DWORD creation = CREATE_ALWAYS;
+	creation = OPEN_EXISTING;
 
 	hFile = CreateFileW(
 		fileName_.getName().w_str(),
@@ -35,10 +36,31 @@ bool File::open(const FileName& fileName_, FileAccessType fileAccessType_) {
 	valid = true;
 	fileAccessType = fileAccessType_;
 
+	DWORD error = GetLastError();
+	if (map_) {
+		hMapFile = CreateFileMappingW(
+			hFile,          // current file handle
+			NULL,           // default security
+			PAGE_READWRITE, // read/write permission
+			0,              // size of mapping object, high
+			//GetFileSize(hFile, nullptr),  // size of mapping object, low
+		16,  // size of mapping object, low
+			NULL);
+		
+		error = GetLastError();
+
+		map = true;
+	}
+	
+
 	return true;
 }
 
 void File::close() {
+
+	if (map) {
+		CloseHandle(hMapFile);
+	}
 
 	CloseHandle(hFile);
 

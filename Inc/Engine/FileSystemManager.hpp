@@ -20,17 +20,18 @@ class File : public Referenceable {
 
 	FileSystemManager* manager;
 	FileName name;
-	bool valid;
+	bool valid, map;
 	FileAccessType fileAccessType;
 	//size_t size;
 	HANDLE hFile;
+	HANDLE hMapFile;
 
 public:
 
 	File(FileSystemManager* manager_) : manager(manager_), valid(false) {}
 	~File();
 
-	virtual bool open(const FileName& name, FileAccessType fileAccessType = FileAccessType::Read);
+	virtual bool open(const FileName& name, FileAccessType fileAccessType = FileAccessType::Read, bool map=false);
 	virtual void close();
 	virtual void flush();
 

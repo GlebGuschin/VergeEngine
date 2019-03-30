@@ -180,8 +180,11 @@ void FileSystemManagerTest(Framework* framework) {
 
 	char buffer[256];
 	for (int i = 0; i < 256; i++) buffer[i] = 0;
-	file->open("TestFile.dat", FileAccessType::Write);
-	file->write(256, buffer);
+
+	//file->open("TestFile.dat", FileAccessType::Read);
+	//file->write(256, buffer);
+	//file->close();
+	file->open("TestFile.dat", FileAccessType::Read, true);	
 	file->close();
 
 

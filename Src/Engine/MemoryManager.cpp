@@ -21,6 +21,13 @@ MemoryBuffer* MemoryManager::createBuffer(size_t size, unsigned flags) {
 
 }
 	//MemoryBuffer* createBuffer(MemoryBuffer* parentBuffer, size_t size, size_t offset, unsigned flags = 0);
+MemoryBuffer* MemoryManager::createBuffer(File* file) {
+
+	MemoryBuffer* buffer = nullptr;
+
+	return buffer;
+
+}
 
 void MemoryManager::destroyBuffer(MemoryBuffer* buffer) {
 
