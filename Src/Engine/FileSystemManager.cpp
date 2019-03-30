@@ -15,11 +15,15 @@ File::~File() {
 
 bool File::open(const FileName& fileName_, FileAccessType fileAccessType_) {
 
-	hFile = CreateFileW(fileName_.getName().w_str(),
-		GENERIC_READ,
+	DWORD access = fileAccessType_ == FileAccessType::Read ? GENERIC_READ : GENERIC_WRITE;
+	DWORD creation = CREATE_ALWAYS;
+
+	hFile = CreateFileW(
+		fileName_.getName().w_str(),
+		access,
 		NULL,
 		NULL,
-		OPEN_EXISTING,
+		creation,
 		NULL,
 		NULL
 	);

@@ -177,9 +177,11 @@ void FileSystemManagerTest(Framework* framework) {
 	FileSystemManager* fileSystemManager = coreModule->getFileSystemManager();
 
 	SharedPtr<File> file = fileSystemManager->createFile();
-	file->open("Shader.fx");
-	char buffer[1024];
-	file->read(1024, buffer);
+
+	char buffer[256];
+	for (int i = 0; i < 256; i++) buffer[i] = 0;
+	file->open("TestFile.dat", FileAccessType::Write);
+	file->write(256, buffer);
 	file->close();
 
 
