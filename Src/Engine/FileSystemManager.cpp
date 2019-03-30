@@ -13,12 +13,30 @@ File::~File() {
 
 }
 
-bool File::open(const FileName& name_, FileAccessType fileAccessType_) {
+bool File::open(const FileName& fileName_, FileAccessType fileAccessType_) {
+
+	hFile = CreateFileW(fileName_.getName().w_str(),
+		GENERIC_READ,
+		NULL,
+		NULL,
+		OPEN_EXISTING,
+		NULL,
+		NULL
+	);
+
+	if (hFile == INVALID_HANDLE_VALUE) {
+		return(false);
+	}
+
+	valid = true;
+	fileAccessType = fileAccessType_;
 
 	return true;
 }
 
 void File::close() {
+
+	CloseHandle(hFile);
 
 }
 
@@ -33,16 +51,28 @@ virtual size_t getSize();
 virtual void setPos(size_t offset);
 */
 
-bool File::read(size_t size, void* ptr) {
+bool File::read(size_t size_, void* ptr_) {
 
-	bool result = false;
+	bool result = true;
+	
+	DWORD read;
+	//DWORD fileSize = size_;
+	//fileSize = GetFileSize(hFile, nullptr);
+	
+	BOOL ok  = ReadFile(hFile, ptr_, size_, &read, NULL);
+	check(ok);
+
 	return result;
 
 }
 
-bool File::write(size_t size, const void* ptr) {
+bool File::write(size_t size_, const void* ptr_) {
 
-	bool result = false;
+	bool result = true;
+	DWORD written;
+
+	BOOL ok = WriteFile(hFile, ptr_, size_, &written, NULL);
+	check(ok);
 	return result;
 
 }
@@ -60,7 +90,7 @@ File* FileSystemManager::createFile() {
 
 	files.add(file);
 
-	return nullptr;
+	return file;
 
 }
 

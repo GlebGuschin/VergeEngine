@@ -176,6 +176,13 @@ void FileSystemManagerTest(Framework* framework) {
 	CoreModule* coreModule = framework->findModule<CoreModule>();
 	FileSystemManager* fileSystemManager = coreModule->getFileSystemManager();
 
+	SharedPtr<File> file = fileSystemManager->createFile();
+	file->open("Shader.fx");
+	char buffer[1024];
+	file->read(1024, buffer);
+	file->close();
+
+
 	DynamicArray<FileName> fileNames;
 	fileSystemManager->collectFiles(String("Content/Textures"), String("dds"), fileNames, true);
 	DynamicArray<SharedPtr<MemoryBuffer>> fileBuffers;
@@ -191,6 +198,23 @@ void FileSystemManagerTest(Framework* framework) {
 void XML_Test(XMLNode* node) {
 
 }
+
+struct RC {};
+
+class Renderer {
+
+	void virtual renderParticles(const RC&) {}
+	void virtual renderTerrain(const RC&) {}
+	void virtual renderModels(const RC&) {}
+
+public:
+
+};
+
+
+
+
+
 
 
 

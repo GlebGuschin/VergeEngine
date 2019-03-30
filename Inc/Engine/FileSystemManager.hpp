@@ -2,6 +2,8 @@
 #include "DynamicArray.hpp"
 #include "String.hpp"
 
+#include <Windows.h>
+
 namespace Verge3D {
 
 //typedef String FileName;
@@ -21,6 +23,7 @@ class File : public Referenceable {
 	bool valid;
 	FileAccessType fileAccessType;
 	//size_t size;
+	HANDLE hFile;
 
 public:
 
