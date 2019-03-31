@@ -24,12 +24,13 @@ enum class TextureType : uint32_t {
 		TexCube,
 		Tex2DArray,
 		Max
+
 };
 
 struct TextureInfo {
 	TextureType type;
 	TexelType texelType;
-	uint32_t width, height, depth;
+	uint32_t width, height, depth, mipLevels;
 	bool renderTarget;
 };
 

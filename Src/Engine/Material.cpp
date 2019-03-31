@@ -3,6 +3,24 @@
 
 namespace Verge3D {
 
+
+
+void MaterialAsset::setTexture(Texture* texture, MaterialTextureType type) {
+
+}
+
+Texture* MaterialAsset::getTexture(MaterialTextureType type) {
+
+	Texture* texture = nullptr;
+
+	return texture;
+
+}
+
+
+
+
+
 Material::~Material() {
 
 	manager->destroyMaterial(this);

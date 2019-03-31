@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Material.hpp"
+#include "TextureManager.hpp"
+
 
 namespace Verge3D {
 
@@ -10,6 +12,8 @@ class MaterialManager : public Referenceable {
 
 	RenderModule* renderModule;
 
+	SharedPtr<Material> defaultMaterial;
+
 protected:
 
 	void addMaterial(Material*);
@@ -17,7 +21,8 @@ protected:
 
 public:
 
-	MaterialManager(RenderModule* rm) : renderModule(rm) {}
+	MaterialManager(RenderModule* rm);
+	~MaterialManager();
 
 	virtual Material* createMaterial();
 	virtual Material* createMaterial(const AssetName&);
@@ -25,6 +30,8 @@ public:
 	virtual void destroyMaterial(Material*);
 
 	virtual Material* cloneMaterial(Material*);
+
+	Material* getDefaultMaterial() const { return defaultMaterial; }
 
 };
 

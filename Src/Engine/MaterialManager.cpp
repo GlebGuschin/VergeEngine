@@ -1,7 +1,26 @@
 #include "MaterialManager.hpp"
+#include "RenderModule.hpp"
 
 namespace Verge3D {
 
+
+MaterialManager::MaterialManager(RenderModule* rm) {
+	
+	renderModule = rm;
+
+	TextureManager* textureManager = rm->getTextureManager();
+	SharedPtr<Texture> texture1 = textureManager->createTexture("Content/Textures/cats.dds");
+	SharedPtr<Texture> texture2 = textureManager->createTexture("Content/Textures/cats.dds");
+	SharedPtr<Texture> texture3 = textureManager->createTexture("Content/Textures/cookie.dds");
+	SharedPtr<Texture> texture4 = textureManager->createTexture("Content/Textures/particle.dds");
+
+	defaultMaterial = createMaterial();
+
+}
+
+MaterialManager::~MaterialManager() {
+
+}
 
 void MaterialManager::addMaterial(Material* material) {
 

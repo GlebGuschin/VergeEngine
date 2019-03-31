@@ -161,16 +161,17 @@ public:
 
 
 
+
 class MaterialAsset : public Asset, public MaterialParams {
 
 public:
 
-	/*
-	void setTexture(A, MaterialTextureType type) {
-		textures[type] = texture;
-	}
+	void setTexture(Texture* texture, MaterialTextureType type);
 	Texture* getTexture(MaterialTextureType type);
-	*/
+
+	//const AssetName& getTexture(MaterialTextureType type);
+	//void setTexture(const AssetName&, MaterialTextureType type);
+
 };
 
 
