@@ -101,6 +101,10 @@ enum class MaterialBlendType : uint8_t {
 };
 
 
+struct MaterialTextureParams {
+	TextureClampType clampType;
+};
+
 enum MaterialTextureType {
 	Default = 0,
 	Normal,

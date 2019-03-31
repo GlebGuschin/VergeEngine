@@ -27,6 +27,14 @@ enum class TextureType : uint32_t {
 
 };
 
+enum class TextureClampType : uint8_t {
+	Clamp,
+	Repeat,
+	Mirror
+};
+
+
+
 struct TextureInfo {
 	TextureType type;
 	TexelType texelType;

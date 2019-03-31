@@ -16,6 +16,10 @@ MaterialManager::MaterialManager(RenderModule* rm) {
 
 	defaultMaterial = createMaterial();
 
+	defaultMaterial->setTexture(texture1, MaterialTextureType::Default);
+	defaultMaterial->setTexture(texture3, MaterialTextureType::Detail);
+	defaultMaterial->setTexture(texture4, MaterialTextureType::Emission);
+
 }
 
 MaterialManager::~MaterialManager() {
