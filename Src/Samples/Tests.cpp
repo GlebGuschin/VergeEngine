@@ -200,6 +200,36 @@ void FileSystemManagerTest(Framework* framework) {
 
 }
 
+struct MaterialShaderPermutaion {
+
+	union {
+		uint64_t mask;
+	};
+
+	struct {
+		bool diffuseMap1 : 1;
+		bool normalMap1 : 1;
+	};
+
+};
+
+void MaterialShaderTestTest(Framework* framework) {
+
+	MaterialShaderPermutaion msp;
+
+	Material* material = nullptr;
+	if (material->getTexture(MaterialTextureType::Default)) {
+
+	}
+
+	if (material->getTexture(MaterialTextureType::Normal)) {
+
+	}
+
+}
+
+
+
 void XML_Test(XMLNode* node) {
 
 }
