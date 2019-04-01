@@ -121,8 +121,11 @@ class MaterialLayer : public Referenceable {
 
 	Name name;
 	SharedPtr<Texture> textures[16];
+	Material* material;
 
 public:
+
+	MaterialLayer(Material* material_ = nullptr ) : material(material_) {}
 
 	const Name& getName() const { return name; }
 	void setName(const Name& name_) { name = name_; }
@@ -132,13 +135,17 @@ public:
 
 };
 
-
-class MaterialParams {
-
+struct MaterialInfo {
 	bool twoSided;
 	float alphaRef;
 	float opacity;
 	MaterialBlendType blendType;
+	MaterialInfo() : alphaRef(1.0f), twoSided(true), blendType(MaterialBlendType::Opaque) {}
+};
+
+class MaterialParams {
+
+	MaterialInfo info;
 
 protected:
 
@@ -146,37 +153,39 @@ protected:
 
 public:
 
-
-	MaterialParams() : alphaRef(1.0f), twoSided(true), blendType(MaterialBlendType::Opaque) {}
+	MaterialParams() {}
 	//Color diffuseColor, ambientColor;	
 
+	const MaterialInfo& getInfo() const { return info; }
+	void setInfo(const MaterialInfo& info_) { info = info_; }	
+
 	void setBlendType(MaterialBlendType blendType_) {
-		blendType = blendType_;
+		info.blendType = blendType_;
 		onUpdateMaterialParams();
 	}
 
-	MaterialBlendType getBlendType() const { return blendType; }
+	MaterialBlendType getBlendType() const { return info.blendType; }
 
 	void setAlphaRef(float alphaRef_) { 
-		alphaRef = alphaRef_; 
+		info.alphaRef = alphaRef_;
 		onUpdateMaterialParams();
 	}
 
-	float getAlphaRef() const { return alphaRef; }
+	float getAlphaRef() const { return info.alphaRef; }
 
 	void setTransparency(float v) { 
-		opacity = v; 
+		info.opacity = v;
 		onUpdateMaterialParams();
 	}
 
-	float getTransparency() const { return opacity; }
+	float getTransparency() const { return info.opacity; }
 
 	void setTwoSided(bool v) { 
-		twoSided = v; 
+		info.twoSided = v;
 		onUpdateMaterialParams();
 	}
 
-	bool getTwoSided() const { return twoSided; }
+	bool getTwoSided() const { return info.twoSided; }
 	
 };
 
@@ -204,7 +213,7 @@ class Material : public Referenceable, public MaterialParams, public AssetListen
 
 	SharedPtr<MaterialAsset> asset;
 	DynamicArray<SharedPtr<MaterialLayer>> layers;
-	SharedPtr<Texture> textures[16];
+	//SharedPtr<Texture> textures[16];
 	MaterialManager* manager;
 
 	CustomRenderParams customRenderParams;
