@@ -62,7 +62,7 @@ void MaterialManager::destroyMaterial(Material* material) {
 
 }
 
-Material* MaterialManager::cloneMaterial(Material* srcMaterial) {
+Material* MaterialManager::cloneMaterial(const Material* srcMaterial) {
 
 	Material* dstMaterial = nullptr;
 

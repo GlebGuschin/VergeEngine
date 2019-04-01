@@ -173,6 +173,8 @@ void CoreModuleTest(Framework* framework) {
 
 void FileSystemManagerTest(Framework* framework) {
 
+	unsigned long long mask;
+	size_t size = sizeof(mask);
 	CoreModule* coreModule = framework->findModule<CoreModule>();
 	FileSystemManager* fileSystemManager = coreModule->getFileSystemManager();
 
@@ -203,7 +205,8 @@ void FileSystemManagerTest(Framework* framework) {
 struct MaterialShaderPermutaion {
 
 	union {
-		uint64_t mask;
+		//uint64_t mask;
+		unsigned long long mask;
 	};
 
 	struct {
@@ -218,7 +221,7 @@ void MaterialShaderTestTest(Framework* framework) {
 	MaterialShaderPermutaion msp;
 
 	Material* material = nullptr;
-	if (material->getTexture(MaterialTextureType::Default)) {
+	if (material->getTexture(MaterialTextureType::Diffuse)) {
 
 	}
 

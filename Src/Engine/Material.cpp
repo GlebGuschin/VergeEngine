@@ -44,7 +44,12 @@ void Material::reloadFromAsset() {
 		return;
 	}
 
+}
 
+Material* Material::clone() const {
+
+	check(manager);
+	return manager->cloneMaterial(this);
 
 }
 

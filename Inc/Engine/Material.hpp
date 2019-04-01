@@ -107,6 +107,7 @@ struct MaterialTextureParams {
 
 enum MaterialTextureType {
 	Default = 0,
+	Diffuse = Default,
 	Normal,
 	Emission,
 	AO,
@@ -170,6 +171,8 @@ class MaterialAsset : public Asset, public MaterialParams {
 
 public:
 
+	void setTexture(TextureAsset* texture, MaterialTextureType type);
+
 	void setTexture(Texture* texture, MaterialTextureType type);
 	Texture* getTexture(MaterialTextureType type);
 
@@ -210,6 +213,7 @@ public:
 	bool getCustomParam(const Name& name, MaterialCustomParam&) const {}
 	size_t getNumCustomParams() const {}
 
+	Material* clone() const;
 
 };
 

@@ -29,7 +29,7 @@ public:
 
 	virtual void destroyMaterial(Material*);
 
-	virtual Material* cloneMaterial(Material*);
+	virtual Material* cloneMaterial(const Material*);
 
 	Material* getDefaultMaterial() const { return defaultMaterial; }
 
