@@ -105,7 +105,7 @@ struct MaterialTextureParams {
 	TextureClampType clampType;
 };
 
-enum MaterialTextureType {
+enum class MaterialTextureType {
 	Default = 0,
 	Diffuse = Default,
 	Normal,
@@ -113,7 +113,8 @@ enum MaterialTextureType {
 	AO,
 	Metalness,
 	Roughness,
-	Detail
+	Detail,
+	Max
 };
 
 

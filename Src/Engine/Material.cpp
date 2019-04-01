@@ -6,16 +6,14 @@ namespace Verge3D {
 
 void MaterialLayer::setTexture(Texture* texture, MaterialTextureType type) {
 
-	textures[type] = texture;
+	textures[(uint32_t)type] = texture;
 }
 
 Texture* MaterialLayer::getTexture(MaterialTextureType type) const {
 
-	return textures[type];
+	return textures[(uint32_t)type];
 
 }
-
-
 
 void MaterialAsset::setTexture(Texture* texture, MaterialTextureType type) {
 
@@ -71,6 +69,7 @@ void Material::reloadFromAsset() {
 Material* Material::clone() const {
 
 	check(manager);
+
 	return manager->cloneMaterial(this);
 
 }

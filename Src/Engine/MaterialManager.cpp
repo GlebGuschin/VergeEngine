@@ -66,7 +66,15 @@ void MaterialManager::destroyMaterial(Material* material) {
 
 Material* MaterialManager::cloneMaterial(const Material* srcMaterial) {
 
-	Material* dstMaterial = nullptr;
+	Material* dstMaterial = createMaterial();
+
+	dstMaterial->setInfo(srcMaterial->getInfo());
+
+	for (uint32_t layerIdx = 0; layerIdx < srcMaterial->getNumMaterialLayers(); layerIdx++) {
+		for (uint32_t texIdx = 0; texIdx < (uint32_t)MaterialTextureType::Max; texIdx++) {
+
+		}
+	}
 
 	return dstMaterial;
 
