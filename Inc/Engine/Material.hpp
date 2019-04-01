@@ -225,9 +225,10 @@ public:
 	uint32_t getNumMaterialLayers() const { return layers.size();  }
 	MaterialLayer* getMaterialLayer(uint32_t) const;
 	MaterialLayer* getMaterialLayer(const Name&) const;
+	bool checkLayer(MaterialLayer*) const;
 
-	void setTexture(Texture* texture, MaterialTextureType type);
-	Texture* getTexture(MaterialTextureType type);
+	void setTexture(Texture* texture, MaterialTextureType type, MaterialLayer* layer=nullptr);
+	Texture* getTexture(MaterialTextureType type, MaterialLayer* layer = nullptr);
 
 	void reloadFromAsset();
 

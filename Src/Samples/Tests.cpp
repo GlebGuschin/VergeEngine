@@ -241,14 +241,22 @@ void MaterialTest(Framework* framework) {
 	SharedPtr<Texture> texture2 = textureManager->createTexture("Content/Textures/cats.dds");
 	SharedPtr<Texture> texture3 = textureManager->createTexture("Content/Textures/cookie.dds");
 	SharedPtr<Texture> texture4 = textureManager->createTexture("Content/Textures/particle.dds");
+	SharedPtr<Texture> texture5 = textureManager->createTexture("Content/Textures/betalbedo.dds");
 	
 	SharedPtr<Material> material1 = materialManager->createMaterial();
 
 	material1->setTexture(texture1, MaterialTextureType::Default);
 	material1->setTexture(texture3, MaterialTextureType::Detail);
-	material1->setTexture(texture4, MaterialTextureType::Emission);
+	//material1->setTexture(texture4, MaterialTextureType::Emission);
 
+	material1->addMaterialLayer("Skin layer");
 
+	MaterialLayer* skinLayer = material1->getMaterialLayer("Skin layer");
+	check(skinLayer);
+
+	material1->setTexture(texture4, MaterialTextureType::Detail, skinLayer);
+
+	int i = 0;
 
 }
 

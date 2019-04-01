@@ -39,15 +39,25 @@ Material::~Material() {
 
 }
 
-void Material::setTexture(Texture* texture, MaterialTextureType type) {
+void Material::setTexture(Texture* texture, MaterialTextureType type, MaterialLayer* layer_) {
 
-	textures[type] = texture;
+	MaterialLayer* layer = layer_ == nullptr ? layers[0].get() : layer_;
+
+	checkLayer(layer); 
+
+	layer->setTexture(texture, type);
+
+	//textures[type] = texture;
 
 }
 
-Texture* Material::getTexture(MaterialTextureType type) {
+Texture* Material::getTexture(MaterialTextureType type, MaterialLayer* layer_) {
 
-	return textures[type];
+	MaterialLayer* layer = layer_ == nullptr ? layers[0].get() : layer_;
+
+	checkLayer(layer);
+
+	return layer->getTexture(type);
 }
 
 void Material::reloadFromAsset() {
@@ -89,6 +99,15 @@ MaterialLayer* Material::getMaterialLayer(const Name& name) const {
 
 	return nullptr;
 
+}
+
+bool Material::checkLayer(MaterialLayer* layer) const {
+
+	for (uint32_t i = 0; i < layers.size(); i++) {		
+		if (layers[i] == layer) return true;
+	}
+
+	return false;
 }
 
 }

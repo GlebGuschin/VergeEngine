@@ -103,6 +103,7 @@ public:
 
 
 	Ptr operator->() { return(ptr); }
+	Ptr get() const { return(ptr); }
 
 	SharedPtr& operator=(T  *ptr_) {
 
