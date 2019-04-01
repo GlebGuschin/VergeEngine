@@ -42,7 +42,7 @@ Material* MaterialManager::createMaterial() {
 
 	Material* material = new Material(this);
 
-	material->addMaterialLayer("Default layer");
+	material->addMaterialLayer("DefaultLayer");
 
 	addMaterial(material);
 
@@ -75,7 +75,7 @@ Material* MaterialManager::cloneMaterial(const Material* srcMaterial) {
 
 		}
 	}
-
+	 
 	return dstMaterial;
 
 }

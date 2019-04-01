@@ -118,6 +118,10 @@ enum class MaterialTextureType {
 };
 
 
+struct MaterialLayerInfo {
+	TextureClampType clampType;
+};
+
 class MaterialLayer : public Referenceable {
 
 	Name name;
