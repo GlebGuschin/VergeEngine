@@ -7,6 +7,7 @@ namespace Verge3D {
 	void ParticleSystemTest();
 	void CoreModuleTest(Framework*);
 	void FileSystemManagerTest(Framework*);
+	void MaterialTest(Framework* framework);
 }
 
 
@@ -30,28 +31,17 @@ void TestApplication::onStart() {
 	renderWindow->move(00, 00);
 	renderWindow->resize(800, 600);
 	renderWindow->update();
-	
-	TextureManager* textureManager = rm->getTextureManager();
-	SharedPtr<Texture> texture1 = textureManager->createTexture("Content/Textures/cats.dds");
-	SharedPtr<Texture> texture2 = textureManager->createTexture("Content/Textures/cats.dds");
-	SharedPtr<Texture> texture3 = textureManager->createTexture("Content/Textures/cookie.dds");
-	SharedPtr<Texture> texture4 = textureManager->createTexture("Content/Textures/particle.dds");
-
-	MaterialManager* materialManager = rm->getMaterialManager();
-	SharedPtr<Material> material1 = materialManager->createMaterial();
-
-	material1->setTexture(texture1, MaterialTextureType::Default);
-	material1->setTexture(texture3, MaterialTextureType::Detail);
-	material1->setTexture(texture4, MaterialTextureType::Emission);
-
+		
 	int i = 0;
 	//SharedPtr<Material> material2 = materialManager->createMaterial("Content/Materials/test.mat");
 	//WorldTest();
+
+	MaterialTest(getFramework());
 	ParticleSystemTest();
 	CoreModuleTest(getFramework());	
 	FileSystemManagerTest(getFramework());
-	//getFramework()->findModule<CoreModule>()-
-
+	//MaterialTest(getFramework());
+	
 
 }
 

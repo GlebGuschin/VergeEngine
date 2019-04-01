@@ -42,6 +42,8 @@ Material* MaterialManager::createMaterial() {
 
 	Material* material = new Material(this);
 
+	material->addMaterialLayer("Default layer");
+
 	addMaterial(material);
 
 	return material;

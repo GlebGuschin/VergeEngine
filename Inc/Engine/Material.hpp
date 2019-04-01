@@ -117,6 +117,22 @@ enum MaterialTextureType {
 };
 
 
+class MaterialLayer : public Referenceable {
+
+	Name name;
+	SharedPtr<Texture> textures[16];
+
+public:
+
+	const Name& getName() const { return name; }
+	void setName(const Name& name_) { name = name_; }
+
+	void setTexture(Texture* texture, MaterialTextureType type);
+	Texture* getTexture(MaterialTextureType type) const;
+
+};
+
+
 class MaterialParams {
 
 	bool twoSided;
@@ -187,7 +203,7 @@ public:
 class Material : public Referenceable, public MaterialParams, public AssetListener {
 
 	SharedPtr<MaterialAsset> asset;
-
+	DynamicArray<SharedPtr<MaterialLayer>> layers;
 	SharedPtr<Texture> textures[16];
 	MaterialManager* manager;
 
@@ -203,6 +219,12 @@ public:
 	//MaterialTextures textures;
 
 	MaterialAsset* getAsset() const { return asset; }
+
+
+	MaterialLayer* addMaterialLayer(const Name&);
+	uint32_t getNumMaterialLayers() const { return layers.size();  }
+	MaterialLayer* getMaterialLayer(uint32_t) const;
+	MaterialLayer* getMaterialLayer(const Name&) const;
 
 	void setTexture(Texture* texture, MaterialTextureType type);
 	Texture* getTexture(MaterialTextureType type);

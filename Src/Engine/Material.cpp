@@ -4,6 +4,18 @@
 namespace Verge3D {
 
 
+void MaterialLayer::setTexture(Texture* texture, MaterialTextureType type) {
+
+	textures[type] = texture;
+}
+
+Texture* MaterialLayer::getTexture(MaterialTextureType type) const {
+
+	return textures[type];
+
+}
+
+
 
 void MaterialAsset::setTexture(Texture* texture, MaterialTextureType type) {
 
@@ -53,9 +65,33 @@ Material* Material::clone() const {
 
 }
 
+MaterialLayer* Material::addMaterialLayer(const Name& name) {
+
+	MaterialLayer* materialLayer = new MaterialLayer;
+	materialLayer->setName(name);
+	layers.add(materialLayer);
+	return materialLayer;
 
 }
 
+MaterialLayer* Material::getMaterialLayer(uint32_t index) const {
+
+	return layers[index];
+
+}
+
+MaterialLayer* Material::getMaterialLayer(const Name& name) const {
+
+	for (uint32_t i = 0; i < layers.size(); i++) {
+		MaterialLayer* layer = layers[i];
+		if (layer->getName() == name) return layer;
+	}
+
+	return nullptr;
+
+}
+
+}
 
 /*
 	void setBlendType(MaterialBlendType blendType_) {

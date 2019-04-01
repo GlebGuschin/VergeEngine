@@ -88,6 +88,7 @@ public:
 		Table[rhs.id].counter++; 
 		Counter++; 
 		id = rhs.id; 
+		name = Table[rhs.id].name;
 		return *this; 
 	}
 

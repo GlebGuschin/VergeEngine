@@ -9,6 +9,7 @@
 #include "CameraComponent.hpp"
 #include "Framework.hpp"
 #include "CoreModule.hpp"
+#include "RenderModule.hpp"
 #include "XML.hpp"
 
 
@@ -231,6 +232,25 @@ void MaterialShaderTestTest(Framework* framework) {
 
 }
 
+void MaterialTest(Framework* framework) {
+
+	RenderModule* renderModule = framework->findModule<RenderModule>();
+	MaterialManager* materialManager = renderModule->getMaterialManager();
+	TextureManager* textureManager = renderModule->getTextureManager();
+	SharedPtr<Texture> texture1 = textureManager->createTexture("Content/Textures/cats.dds");
+	SharedPtr<Texture> texture2 = textureManager->createTexture("Content/Textures/cats.dds");
+	SharedPtr<Texture> texture3 = textureManager->createTexture("Content/Textures/cookie.dds");
+	SharedPtr<Texture> texture4 = textureManager->createTexture("Content/Textures/particle.dds");
+	
+	SharedPtr<Material> material1 = materialManager->createMaterial();
+
+	material1->setTexture(texture1, MaterialTextureType::Default);
+	material1->setTexture(texture3, MaterialTextureType::Detail);
+	material1->setTexture(texture4, MaterialTextureType::Emission);
+
+
+
+}
 
 
 void XML_Test(XMLNode* node) {
