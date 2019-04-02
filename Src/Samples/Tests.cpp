@@ -242,6 +242,7 @@ void MaterialTest(Framework* framework) {
 	SharedPtr<Texture> texture3 = textureManager->createTexture("Content/Textures/cookie.dds");
 	SharedPtr<Texture> texture4 = textureManager->createTexture("Content/Textures/particle.dds");
 	SharedPtr<Texture> texture5 = textureManager->createTexture("Content/Textures/betalbedo.dds");
+	SharedPtr<Texture> texture6 = textureManager->createTexture("Content/Textures/BetNormalMap.dds");
 	
 	SharedPtr<Material> material1 = materialManager->createMaterial();
 
@@ -249,12 +250,18 @@ void MaterialTest(Framework* framework) {
 	material1->setTexture(texture3, MaterialTextureType::Detail);
 	//material1->setTexture(texture4, MaterialTextureType::Emission);
 
-	material1->addMaterialLayer("Skin layer");
+	const Name skinLayerName("SkinLayer");
+	material1->addMaterialLayer(skinLayerName);
 
-	MaterialLayer* skinLayer = material1->getMaterialLayer("Skin layer");
+	MaterialLayer* skinLayer = material1->getMaterialLayer(skinLayerName);
 	check(skinLayer);
 
 	material1->setTexture(texture4, MaterialTextureType::Detail, skinLayer);
+
+	const Name shellacLayerName("ShellacLayer");
+	material1->addMaterialLayer(shellacLayerName);
+	MaterialLayer* shellacLayer = material1->getMaterialLayer(shellacLayerName);
+	material1->setTexture(texture6, MaterialTextureType::Normal, shellacLayer);
 
 	int i = 0;
 

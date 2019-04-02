@@ -24,6 +24,11 @@ class Pass : public Referenceable {
 
 public:
 
+	//BlendState blendState;
+	uint32_t blendState;
+	uint32_t depthStencilState;
+	uint32_t ratesterState;
+
 };
 
 
