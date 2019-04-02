@@ -17,21 +17,25 @@ typedef DynamicArray<XMLNodeAttribItem> XMLNodeAttribs;
 struct XMLNode;
 struct XMLDocument;
 
-struct XMLNode : public Referenceable {
+class XMLNode : public Referenceable {
 
-	virtual const XMLString &getName() const = 0;
-	virtual const XMLString &getValue() const = 0;
+	DynamicArray<SharedPtr<XMLNode>> children;
 
-	virtual const XMLNodeAttribs&  getAttribs() const = 0;
-	virtual XMLNodeAttribs&  getAttribs() = 0;
+public:
 
-	virtual uint32_t getNumChildren() const = 0;
-	virtual XMLNode* getChildNode(uint32_t index) const = 0;
+	const XMLString &getName() const;
+	const XMLString &getValue() const;
 
-	virtual XMLNode* addNode() = 0;
-	virtual void removeNode(XMLNode*) = 0;
+	//const XMLNodeAttribs&  getAttribs() const = 0;
+	//XMLNodeAttribs&  getAttribs() = 0;
 
-	virtual XMLNode* getParentNode() = 0;
+	virtual uint32_t getNumChildren() const;
+	virtual XMLNode* getChildNode(uint32_t index) const;
+
+	XMLNode* addNode();
+	void removeNode(XMLNode*);
+
+	XMLNode* getParentNode();
 
 };
 	
