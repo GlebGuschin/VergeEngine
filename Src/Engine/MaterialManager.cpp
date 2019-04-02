@@ -75,6 +75,7 @@ Material* MaterialManager::cloneMaterial(const Material* srcMaterial) {
 
 		}
 	}
+
 	 
 	return dstMaterial;
 

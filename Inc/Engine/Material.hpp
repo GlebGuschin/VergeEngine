@@ -114,6 +114,7 @@ enum class MaterialTextureType {
 	Metalness,
 	Roughness,
 	Detail,
+	Blend,
 	Max
 };
 
@@ -137,6 +138,8 @@ public:
 
 	void setTexture(Texture* texture, MaterialTextureType type);
 	Texture* getTexture(MaterialTextureType type) const;
+
+	MaterialLayer* clone() const;
 
 };
 
@@ -218,7 +221,7 @@ class Material : public Referenceable, public MaterialParams, public AssetListen
 
 	SharedPtr<MaterialAsset> asset;
 	DynamicArray<SharedPtr<MaterialLayer>> layers;
-	//SharedPtr<Texture> textures[16];
+
 	MaterialManager* manager;
 
 	CustomRenderParams customRenderParams;
@@ -227,13 +230,8 @@ public:
 
 	Material(MaterialManager* manager_) : manager(manager_) {}
 	~Material();
-
-	//Material() : alphaValue(1.0f), masked(false), blendType(MATERIAL_BLEND_NONE) {}
-	//Color diffuseColor, ambientColor;
-	//MaterialTextures textures;
-
+	
 	MaterialAsset* getAsset() const { return asset; }
-
 
 	MaterialLayer* addMaterialLayer(const Name&);
 	uint32_t getNumMaterialLayers() const { return layers.size();  }

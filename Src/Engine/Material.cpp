@@ -15,6 +15,12 @@ Texture* MaterialLayer::getTexture(MaterialTextureType type) const {
 
 }
 
+MaterialLayer* MaterialLayer::clone() const {
+	return nullptr;
+}
+
+
+
 void MaterialAsset::setTexture(Texture* texture, MaterialTextureType type) {
 
 }
