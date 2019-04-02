@@ -115,6 +115,8 @@ enum class MaterialTextureType {
 	Roughness,
 	Detail,
 	Blend,
+	Custom0,
+	Custom7,
 	Max
 };
 
