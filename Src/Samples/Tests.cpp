@@ -13,6 +13,7 @@
 #include "XML.hpp"
 
 
+
 namespace Verge3D {
 
 
@@ -248,6 +249,9 @@ void MaterialTest(Framework* framework) {
 
 	material1->setTexture(texture1, MaterialTextureType::Default);
 	material1->setTexture(texture3, MaterialTextureType::Detail);
+
+	//material1->
+
 	//material1->setTexture(texture4, MaterialTextureType::Emission);
 
 	const Name skinLayerName("SkinLayer");
@@ -274,13 +278,90 @@ void XML_Test(XMLNode* node) {
 
 struct RC {};
 
-class Renderer {
+class XRenderer {
 
 	void virtual renderParticles(const RC&) {}
 	void virtual renderTerrain(const RC&) {}
 	void virtual renderModels(const RC&) {}
 
 public:
+
+};
+
+}
+
+
+class RenderResource {
+
+};
+
+class HardwareTexture : public RenderResource {
+
+};
+
+class HardwareSampler : public RenderResource {
+
+};
+
+class FrameBuffer : public RenderResource {
+
+};
+
+class SwapChain: public RenderResource {
+
+};
+
+class RenderTask {
+};
+
+class DrawTask : public RenderTask {
+	virtual void setScissor() = 0;
+};
+
+class ComputeTask : public RenderTask {
+};
+
+
+class RenderContext {
+
+public:
+
+	virtual DrawTask* createDrawTask() = 0;
+
+};
+
+//class Pass : public Referenceable {
+class Pass {
+public:
+	//BlendState blendState;
+	uint32_t blendState;
+	uint32_t depthStencilState;
+	uint32_t ratesterState;
+};
+
+//class Technique : public Referenceable {
+class Technique {
+public:
+	Pass* addPass() { return new Pass(); }
+};
+
+
+
+
+
+class Renderer {
+
+public:
+
+	virtual HardwareTexture* createTexture() = 0;
+	virtual void destroyTexture(HardwareTexture*) = 0;
+
+	virtual FrameBuffer* createFramebuffer(HardwareTexture* depthStencil, HardwareTexture* color0) = 0;
+	virtual void destroyFramebuffer(FrameBuffer*) = 0;
+
+	virtual SwapChain* createSwapChain() = 0;
+	virtual void destroySwapChain(SwapChain*) = 0;
+
 
 };
 
@@ -291,4 +372,26 @@ public:
 
 
 
-}
+
+
+class Propertyable {
+
+public:
+
+	virtual void onChangeProperty() {}
+
+};
+
+
+class PropertyTest : public Propertyable {
+
+public:
+	
+	void setup() {
+	
+	
+	}
+
+};
+
+

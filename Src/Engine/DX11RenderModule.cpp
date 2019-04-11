@@ -293,6 +293,30 @@ bool DX11RenderModule::init(Framework* framework) {
 	logInfo(L"DX11RenderModule intialized...");
 	//error(L"Failed");
 
+	std::vector<ID3D11Texture2D*> textures;
+	HRESULT hOK = S_OK;
+	do {
+		
+		D3D11_TEXTURE2D_DESC desc;
+		ZeroMemory(&desc, sizeof(desc));
+		desc.Width = desc.Height = 1024 * 16;
+		desc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+		desc.MipLevels = 0;
+		desc.ArraySize = 1;
+		desc.SampleDesc.Count = 1;
+
+		ID3D11Texture2D* pTexture = nullptr;
+		hOK = device->CreateTexture2D(&desc, nullptr, &pTexture);
+		if (hOK == S_OK) {
+			textures.push_back(pTexture);
+		}
+
+	} while (hOK == S_OK);
+
+	logInfo(L"Video memory size %u Mb", textures.size() * 16 * 4 * 4 );
+	for (auto& texture : textures) {
+		SAFE_RELEASE(texture);
+	}
 
 	//SharedPtr<MemoryBuffer> mb = getFramework()->findModule<CoreModule>()->getFileSystemManager()->loadFile("Shader.fx");
 	SharedPtr<MemoryBuffer> mb;

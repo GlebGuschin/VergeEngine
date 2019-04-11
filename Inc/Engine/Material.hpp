@@ -191,7 +191,7 @@ public:
 	float getTransparency() const { return info.opacity; }
 
 	void setTwoSided(bool v) { 
-		info.twoSided = v;
+  		info.twoSided = v;
 		onUpdateMaterialParams();
 	}
 
