@@ -1,4 +1,4 @@
-#include "World.hpp"
+﻿#include "World.hpp"
 #include "Common.hpp"
 #include "DynamicArray.hpp"
 #include "Math.hpp"
@@ -17,6 +17,24 @@
 namespace Verge3D {
 
 
+	
+class TimeInfo {
+
+	float deltaTime, totalTime;
+
+public:
+
+	TimeInfo() : deltaTime(0.0f), totalTime(0.0f) {}
+
+	float getTotalTime() const { return totalTime; }
+	float getDeltaTime() const { return deltaTime; }
+
+	void tick(float deltaTime_) {
+		deltaTime = deltaTime_;
+		totalTime += deltaTime;
+	}
+
+};
 
 
 
@@ -395,3 +413,6 @@ public:
 };
 
 
+/*
+История повторяется четыре раза: 1-ый  раз - как трагедия, 2-ой раз - в виде фарса, 3-ий раз - для особо тупых и 4-ый раз - на Украине
+*/
