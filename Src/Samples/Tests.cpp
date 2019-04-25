@@ -313,6 +313,12 @@ class RenderResource {
 
 };
 
+
+struct HardwareTextureInfo {
+
+};
+
+
 class HardwareTexture : public RenderResource {
 
 };

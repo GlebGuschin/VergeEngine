@@ -20,7 +20,7 @@ public:
 };
 
 struct EntitySpawnInfo {
-	int i;
+	Transform transform;
 };
 
 struct EntityDestroyInfo {
@@ -66,7 +66,9 @@ public:
 	};
 	virtual bool destroyEntity(Entity* entity, const EntityDestroyInfo& info = ) { return false; }
 	*/
-	
+		
+	virtual bool spawnEntity(const EntitySpawnInfo&);
+
 	virtual bool spawnEntity(Entity* entity, Entity* parent = nullptr);
 	virtual bool destroyEntity(Entity* entity);
 

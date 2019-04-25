@@ -45,6 +45,12 @@ void World::dump() {
 
 }
 
+bool World::spawnEntity(const EntitySpawnInfo& info) {
+
+	return true;
+
+}
+
 bool World::spawnEntity(Entity* entity, Entity* parent) {
 
 	if (parent == nullptr) parent = getRoot();

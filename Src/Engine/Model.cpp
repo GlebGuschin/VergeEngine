@@ -12,8 +12,14 @@ uint32_t Model::getNumLevelOfDetails() const {
 ModelLevelOfDetail* Model::getModelLevelOfDetailByDistance(float distance) const {
 
 	return nullptr;
+
 }
 
+ModelLevelOfDetail* Model::addModelLevelOfDetail(float distance) const {
+
+	return nullptr;
+
+}
 
 }
 

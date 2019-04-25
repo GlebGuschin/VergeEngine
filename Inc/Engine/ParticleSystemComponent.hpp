@@ -9,6 +9,7 @@ class ParticleSystemComponent : public Component {
 public:
 
 	virtual void setParticleSystem(ParticleSystem*) {}
+
 };
 
 }
