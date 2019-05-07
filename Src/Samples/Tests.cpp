@@ -12,9 +12,26 @@
 #include "RenderModule.hpp"
 #include "XML.hpp"
 
-
-
 namespace Verge3D {
+
+	class ModelComponent : public Component {
+	public:
+		virtual Material* getMaterial(unsigned meshIndex) const { return nullptr; }
+		virtual void setMaterial(Material*, unsigned meshIndex) {}
+	};
+
+	class StaticModelComponent : public ModelComponent {
+	public:
+		//virtual Material* getMaterial(unsigned meshIndex) const { return nullptr; }
+		//virtual void setMaterial(Material*, unsigned meshIndex) {}
+	};
+
+	class SkinnedModelComponent : public ModelComponent {
+	public:
+		//virtual Material* getMaterial(unsigned meshIndex) const { return nullptr; }
+		//virtual void setMaterial(Material*, unsigned meshIndex) {}
+	};
+
 
 
 	
@@ -51,6 +68,7 @@ void WorldTest() {
 
 	entity111->addComponent(new ParticleSystemComponent);
 	entity111->addComponent(new OmniLightComponent);
+	entity111->addComponent(new SpotLightComponent);
 	entity1->addComponent(new CameraComponent);
 
 	

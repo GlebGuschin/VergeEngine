@@ -129,15 +129,16 @@ enum class MatrixType : uint32_t {
 	Projection,
 	World,
 	InvView,
-	//Max
+	Max
 };
 
+//static constexpr uint32_t MaxSize = sizeof();
 
-/*
 template  <typename T>
 class MatrixSet {
 
-	T matrices[MatrixType::Max];
+	//T matrices[MatrixType::Max];
+	T matrices[10];
 	void update();
 
 public:
@@ -147,7 +148,7 @@ public:
 
 	void commit() {}
 };
-*/
+
 
 struct IntPosition {
 	int x, y;
