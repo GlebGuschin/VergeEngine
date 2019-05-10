@@ -24,13 +24,21 @@ class Entity : public Referenceable {
 	Entity* parent;
 
 	Transform transform;
+	float lifeTime, lifeTimeLimit;
 
 protected:
 
 	virtual void onEnterWorld();
 	virtual void onLeaveWorld();
 
+	void reset();
+	
 public:
+
+	Entity() { reset(); }
+
+	void setLifeTimeLimit(float v);
+	bool isAlive() const;
 
 	void setTransform(const Transform& transform_);
 
@@ -84,6 +92,7 @@ public:
 	}
 
 	void dump(unsigned len=0);
+	void update(float deltaTime);
 
 	//bool write(XMLNode*);
 	//bool read(XMLNode*);

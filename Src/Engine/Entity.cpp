@@ -3,6 +3,35 @@
 
 namespace Verge3D {
 
+void Entity::reset() {
+
+	lifeTime = 0.0f;
+	lifeTimeLimit = 0.0f;
+
+}
+
+void Entity::update(float deltaTime) {
+
+	lifeTime += deltaTime;
+	if (lifeTime < lifeTimeLimit) {
+
+	}
+
+}
+
+void Entity::setLifeTimeLimit(float value) {
+
+	lifeTimeLimit = value;
+	lifeTime = 0.0f;
+
+}
+
+bool Entity::isAlive() const {
+
+	return lifeTime < lifeTimeLimit;
+
+}
+
 void Entity::setParent(Entity* parent_) {
 
 	parent = parent_;

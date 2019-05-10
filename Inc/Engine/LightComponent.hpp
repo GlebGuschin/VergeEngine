@@ -36,4 +36,11 @@ public:
 
 };
 
+class AreaLightComponent : public LightComponent {
+
+public:
+
+};
+
+
 }

@@ -69,6 +69,7 @@ void WorldTest() {
 	entity111->addComponent(new ParticleSystemComponent);
 	entity111->addComponent(new OmniLightComponent);
 	entity111->addComponent(new SpotLightComponent);
+	entity111->addComponent(new SkinnedModelComponent);
 	entity1->addComponent(new CameraComponent);
 
 	
@@ -79,11 +80,24 @@ void WorldTest() {
 	world->spawnEntity(entity111, entity11);
 	world->spawnEntity(entity2);
 
+	world->dump();
+
+	// particles spawn test
+	for (int i = 0; i < 100; i++) {
+
+		Entity* entity = new Entity;
+		entity->setLifeTimeLimit(Random<float>(0.1f,1.1f));
+		entity->addComponent(new ParticleSystemComponent);
+		world->spawnEntity(entity);
+
+	}
 
 	
 	world->dump();
 
 	world->destroyEntity(entity1);
+
+	world->update(0.5f);
 
 	world->dump();
 

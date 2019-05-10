@@ -34,7 +34,7 @@ void TestApplication::onStart() {
 		
 	int i = 0;
 	//SharedPtr<Material> material2 = materialManager->createMaterial("Content/Materials/test.mat");
-	//WorldTest();
+	WorldTest();
 
 	MaterialTest(getFramework());
 	ParticleSystemTest();

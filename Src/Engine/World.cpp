@@ -27,11 +27,16 @@ void World::unregisterComponent(Component* component) {
 
 }
 
-void World::update(float timeDelta) {
+void World::update(float deltaTime) {
 
-	totalTime += timeDelta;
+	totalTime += deltaTime;
 
-	for (size_t i = 0; i < components.size(); i++)  components[i]->onUpdate(timeDelta);
+	for (size_t i = 0; i < components.size(); i++) {
+		components[i]->onUpdate(deltaTime);
+	}
+
+
+
 }
 
 void World::dump() {
