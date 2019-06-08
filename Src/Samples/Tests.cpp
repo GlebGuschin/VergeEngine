@@ -82,6 +82,20 @@ void WorldTest() {
 
 	world->dump();
 
+	 Entity* root = world->getRoot();
+
+	for (int i = 0; i < 5; i++) {
+
+		Entity* entity = new Entity;
+		world->spawnEntity(entity,root);
+
+		root = entity;
+
+	}
+
+	world->dump();
+
+
 	// particles spawn test
 	for (int i = 0; i < 100; i++) {
 

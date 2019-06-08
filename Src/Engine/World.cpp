@@ -58,7 +58,9 @@ bool World::spawnEntity(const EntitySpawnInfo& info) {
 
 bool World::spawnEntity(Entity* entity, Entity* parent) {
 
-	if (parent == nullptr) parent = getRoot();
+	if (parent == nullptr) {
+		parent = getRoot();
+	}
 
 	char buffer[128];
 	sprintf_s(buffer,"Entity%u", getNewEntityCounter() );
