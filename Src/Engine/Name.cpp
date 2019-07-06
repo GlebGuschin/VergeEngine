@@ -4,6 +4,67 @@
 
 using namespace Verge3D;
 
+Name::Name(const Name& name_) {
+	id = name_.id;
+	Table[id].counter++;
+	Counter++;
+	name = &Table[id].name[0];
+}
+
+Name::~Name() {
+
+	Counter--;
+
+	if (Counter == 0) {
+		Finit();
+	}
+	else {
+		Table[id].counter--;
+	}
+
+}
+
+Name& Name::operator=(const Name& rhs) {
+	Table[rhs.id].counter++;
+	Counter++;
+	id = rhs.id;
+	name = Table[rhs.id].name;
+	return *this;
+}
+
+Name::Name(const char* name_) {
+
+	Init();
+	assert(strlen(name_) <= MAX_NAME_LENGTH);
+
+	for (unsigned i = 1; i < MAX_NAMES; i++) {
+		if (strcmp(name_, Table[i].name) == 0) {
+			Table[i].counter++;
+			id = i;
+			Counter++;
+			name = &Table[i].name[0];
+			return;
+		}
+
+	}
+
+	for (unsigned i = 1; i < MAX_NAMES; i++) {
+		if (Table[i].counter == 0) {
+			strcpy_s(&Table[i].name[0], MAX_NAME_LENGTH, name_);
+			Table[i].counter = 1;
+			id = i;
+			Counter++;
+			name = &Table[i].name[0];
+			return;
+		}
+	}
+
+
+	assert(0);
+
+}
+
+
 void Name::Dump() {
 	printf("Dump names...\n");
 	for (unsigned i = 1; i < MAX_NAMES; i++) {

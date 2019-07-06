@@ -16,7 +16,9 @@ TestApplication app;
 
 int APIENTRY wWinMain(HINSTANCE hInstance_, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int nCmdShow) {
 
-	
+	{
+		Name name("!!!");
+	}
 	app.run(hInstance_, hPrevInstance, lpCmdLine, nCmdShow);
 
 	return 0;

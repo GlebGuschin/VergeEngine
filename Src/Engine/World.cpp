@@ -75,12 +75,16 @@ bool World::spawnEntity(Entity* entity, Entity* parent) {
 		listeners[i]->onSpawnEntity(entity);
 	}
 
+	entities.add(entity);
+
 	DebugLog("Entity spawned");
 	
 	return true;
 }
 
 bool World::destroyEntity(Entity* entity) {
+
+	entities.remove(entity);
 
 	check(entity);
 	check(entity->getWorld() == this);

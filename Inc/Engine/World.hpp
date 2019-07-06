@@ -34,6 +34,7 @@ protected:
 
 	DynamicArray<WorldListener*> listeners;
 	SharedPtr<Entity> rootEntity;
+	DynamicArray<Entity*> entities;
 
 	SharedPtr<RenderScene>  renderScene;
 

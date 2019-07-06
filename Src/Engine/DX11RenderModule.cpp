@@ -248,6 +248,7 @@ bool DX11RenderModule::init(Framework* framework) {
 	createDeviceFlags |= D3D11_CREATE_DEVICE_DEBUG;
 #endif
 
+
 	/*
 
 	D3D_DRIVER_TYPE driverTypes[] =
@@ -292,6 +293,13 @@ bool DX11RenderModule::init(Framework* framework) {
 
 	logInfo(L"DX11RenderModule intialized...");
 	//error(L"Failed");
+
+	IDXGIDevice * pDXGIDevice;
+	hr = device->QueryInterface(__uuidof(IDXGIDevice), (void **)&pDXGIDevice);
+	IDXGIAdapter * pDXGIAdapter;
+	pDXGIDevice->GetAdapter(&pDXGIAdapter);
+	DXGI_ADAPTER_DESC adapterDesc;
+	pDXGIAdapter->GetDesc(&adapterDesc);
 
 	std::vector<ID3D11Texture2D*> textures;
 	HRESULT hOK = S_OK;
